@@ -19,7 +19,7 @@ const development = {
 const production = {
     app: {
         port: process.env.PORT,
-        host: "authwebapplication.herokuapp.com"
+        host: "math-network.herokuapp.com"
     },
     auth: {
         googleClientID: process.env.GOOGLE_CLIENT_ID,
