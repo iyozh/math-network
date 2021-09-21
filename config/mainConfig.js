@@ -9,7 +9,10 @@ const development = {
     },
     auth: {
         googleClientID: process.env.GOOGLE_CLIENT_ID,
-        googleSecretKey: process.env.GOOGLE_SECRET_KEY
+        googleSecretKey: process.env.GOOGLE_SECRET_KEY,
+        vkontakteAppId: process.env.VKONTAKTE_APP_ID,
+        vkontakteAppSecret: process.env.VKONTAKTE_APP_SECRET
+
     },
     db: {
         databaseUrl: process.env.DATABASE_URL,
@@ -23,7 +26,9 @@ const production = {
     },
     auth: {
         googleClientID: process.env.GOOGLE_CLIENT_ID,
-        googleSecretKey: process.env.GOOGLE_SECRET_KEY
+        googleSecretKey: process.env.GOOGLE_SECRET_KEY,
+        vkontakteAppId: process.env.VKONTAKTE_APP_ID,
+        vkontakteAppSecret: process.env.VKONTAKTE_APP_SECRET
     },
     db: {
         databaseUrl: process.env.DATABASE_URL,
