@@ -12,13 +12,6 @@ router.get('/google/callback',
         res.redirect('/');
     });
 
-router.get('/twitter', passport.authenticate('twitter'));
-
-router.get('/twitter/callback',
-    passport.authenticate('twitter', {
-        successRedirect: '/',
-        failureRedirect: '/login' }));
-
 router.get("/vkontakte",
     passport.authenticate("vkontakte", {scope: ['profile', 'email']}));
 
@@ -29,5 +22,11 @@ router.get(
         failureRedirect: "/login",
     })
 );
+
+router.get('/logout', (req, res) =>{
+    req.logout();
+    res.redirect('/');
+});
+
 
 module.exports = router;

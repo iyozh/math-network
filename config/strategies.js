@@ -27,7 +27,7 @@ passport.use(new GoogleStrategy({
             where: {
                 social_user_id: profile.id.toString(),
                 name: profile.displayName,
-                registration_type: "vk",
+                registration_type: "google",
             },
         }).then( function (user) {
             done(null, user);
