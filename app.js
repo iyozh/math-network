@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session')
 const logger = require('morgan');
 const passport = require('passport');
+const cors = require("cors");
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let authRouter = require('./routes/auth');
@@ -23,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'math-network-frontend/build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'keyboard cat',
@@ -33,6 +34,16 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+app.use(
+    cors({
+      origin: "http://localhost:3000", // allow to server to accept request from different origin
+      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+      credentials: true // allow session cookie from browser to pass through
+    })
+);
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
