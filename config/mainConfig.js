@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV;
 
 const development = {
     app: {
-        port: 3000,
+        port: 5000,
         host: 'localhost'
     },
     auth: {
