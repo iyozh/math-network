@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { user: req.user ? req.user[0] : "Anonymous"});
+router.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/math-network-frontend/build/index.html'));
 });
 
 router.get('/express_backend', (req, res) => {
