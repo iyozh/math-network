@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use(session({
   secret: 'keyboard cat',
@@ -38,7 +38,7 @@ app.use(passport.session());
 
 app.use(
     cors({
-      origin: "http://localhost:3000", // allow to server to accept request from different origin
+      origin: "math-network.herokuapp.com", // allow to server to accept request from different origin
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       credentials: true // allow session cookie from browser to pass through
     })
@@ -49,6 +49,14 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/profile', profileRouter);
+
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, 'client/build')))
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname,"client/build/index.html"))
+    })
+}
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const config = require('config/mainConfig');
 require('../config/strategies')
 
 router.get('/google',
@@ -9,7 +10,7 @@ router.get('/google',
 router.get('/google/callback',
     passport.authenticate('google', {failureRedirect: '/login'}),
     function (req, res) {
-        res.redirect('/');
+        res.redirect(config.app.host);
     });
 
 router.get("/vkontakte",
@@ -25,7 +26,19 @@ router.get(
 
 router.get('/logout', (req, res) =>{
     req.logout();
-    res.redirect('/');
+    res.redirect(config.app.host);
+});
+
+
+router.get("/login/success", (req, res) => {
+    if (req.user) {
+        res.json({
+            success: true,
+            message: "user has successfully authenticated",
+            user: req.user,
+            cookies: req.cookies
+        });
+    }
 });
 
 
