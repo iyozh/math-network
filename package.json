@@ -4,11 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "server": "nodemon ./bin/www",
-    "client": "npm run srart --prefix client",
-    "client:install": "npm install --prefix client",
-    "client:build": "npm run build --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "heroku-postbuild":"cd client && npm install && npm build"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
