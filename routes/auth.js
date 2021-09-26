@@ -10,7 +10,7 @@ router.get('/google',
 router.get('/google/callback',
     passport.authenticate('google', {failureRedirect: '/login'}),
     function (req, res) {
-        res.redirect(config.app.host);
+        res.redirect("/");
     });
 
 router.get("/vkontakte",
@@ -26,7 +26,7 @@ router.get(
 
 router.get('/logout', (req, res) =>{
     req.logout();
-    res.redirect(config.app.host);
+    res.redirect("/");
 });
 
 
