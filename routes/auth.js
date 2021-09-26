@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const config = require('config/mainConfig');
+const config = require('../config/mainConfig');
 require('../config/strategies')
 
 router.get('/google',
