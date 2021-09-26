@@ -10,7 +10,7 @@ export default class HomePage extends Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:5000/auth/login/success", {
+        fetch("https://math-network.herokuapp.com/auth/login/success", {
             method: "GET",
             credentials: "include",
             headers: {
