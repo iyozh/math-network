@@ -1,6 +1,7 @@
 import Header from "./Header";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
+import env from "react-dotenv";
 
 export default class HomePage extends Component {
     state = {
@@ -63,3 +64,8 @@ export default class HomePage extends Component {
         this.setState({ authenticated: false });
     };
 }
+
+
+const SERVER_URL = env.REACT_APP_SERVER_URL;
+const CLIENT_ID = env.REACT_APP_CLIENT_ID;
+console.log(SERVER_URL, CLIENT_ID)

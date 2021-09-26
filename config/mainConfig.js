@@ -5,7 +5,8 @@ const env = process.env.NODE_ENV;
 const development = {
     app: {
         port: process.env.PORT,
-        host: 'localhost'
+        host: 'localhost',
+        react_host: "localhost:3000"
     },
     auth: {
         googleClientID: process.env.GOOGLE_CLIENT_ID,
@@ -22,7 +23,8 @@ const development = {
 const production = {
     app: {
         port: process.env.PORT,
-        host: "math-network.herokuapp.com"
+        host: "math-network.herokuapp.com",
+        react_host: "math-network.herokuapp.com"
     },
     auth: {
         googleClientID: process.env.GOOGLE_CLIENT_ID,

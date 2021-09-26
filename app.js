@@ -10,7 +10,7 @@ let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let authRouter = require('./routes/auth');
 let profileRouter = require('./routes/profile');
-
+const config = require('./config/mainConfig');
 
 
 const app = express();
@@ -38,7 +38,7 @@ app.use(passport.session());
 
 app.use(
     cors({
-      origin: "math-network.herokuapp.com", // allow to server to accept request from different origin
+      origin: config.app.react_host, // allow to server to accept request from different origin
       methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
       credentials: true // allow session cookie from browser to pass through
     })
