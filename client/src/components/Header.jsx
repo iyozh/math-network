@@ -26,13 +26,13 @@ export default class Header extends Component {
     _handleSignInClick = () => {
         // Authenticate using via passport api in the backend
         // Open Twitter login page
-        window.open("https://math-network.herokuapp.com/auth/google", "_self");
+        window.open(`${window.env.REACT_APP_SERVER_URL}/auth/google`, "_self");
     };
 
     _handleLogoutClick = () => {
         // Logout using Twitter passport api
         // Set authenticated state to false in the HomePage component
-        window.open("https://math-network.herokuapp.com/auth/logout", "_self");
+        window.open(`${window.env.REACT_APP_SERVER_URL}/auth/logout`, "_self");
         this.props.handleNotAuthenticated();
     };
 }

@@ -198,7 +198,7 @@ window.env = {
   "PSModulePath": "C:\\Users\\evzhe\\OneDrive\\Документы\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
   "PUBLIC": "C:\\Users\\Public",
   "REACT_APP_CLIENT_ID": "1097hy67546hbdy2",
-  "REACT_APP_SERVER_URL": "https://example.com/api/",
+  "REACT_APP_SERVER_URL": "http://localhost:5000",
   "SESSIONNAME": "Console",
   "SystemDrive": "C:",
   "SystemRoot": "C:\\Windows",

@@ -1,5 +1,4 @@
 import Header from "./Header";
-import PropTypes from "prop-types";
 import React, { Component } from "react";
 
 export default class HomePage extends Component {
@@ -10,7 +9,7 @@ export default class HomePage extends Component {
     };
 
     componentDidMount() {
-        fetch("https://math-network.herokuapp.com/auth/login/success", {
+        fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -63,8 +62,3 @@ export default class HomePage extends Component {
         this.setState({ authenticated: false });
     };
 }
-
-
-const SERVER_URL = window.env.REACT_APP_SERVER_URL;
-const CLIENT_ID = window.env.REACT_APP_CLIENT_ID;
-console.log(SERVER_URL, CLIENT_ID)
