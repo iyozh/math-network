@@ -36,5 +36,3 @@ export default class Header extends Component {
         this.props.handleNotAuthenticated();
     };
 }
-
-console.log(window.env.REACT_APP_SERVER_URL)
