@@ -31,6 +31,7 @@ router.get('/logout', (req, res) =>{
 
 
 router.get("/login/success", (req, res) => {
+    console.log("");
     if (req.user) {
         res.json({
             success: true,
