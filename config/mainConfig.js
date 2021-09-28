@@ -6,7 +6,7 @@ const development = {
     app: {
         port: process.env.PORT,
         host: 'localhost',
-        react_host: "localhost:3000"
+        react_host: "http://localhost:3000"
     },
     auth: {
         googleClientID: process.env.GOOGLE_CLIENT_ID,
