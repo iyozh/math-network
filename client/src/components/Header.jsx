@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 
@@ -20,12 +19,12 @@ export default class Header extends Component {
                     </a>
 
                     <ul className="nav nav-pills">
-                        <li className="nav-item"><a href="#" className="nav-link" aria-current="page">Home</a></li>
+                        <li key="home" className="nav-item"><a href="#" className="nav-link" aria-current="page">Home</a></li>
                         { authenticated ? [
-                            <li onClick={this._handleLogoutClick} className="nav-item"><a className="nav-link" id="4">Logout</a></li>,
-                            <li className="nav-item"><a className="nav-link" aria-current="page">Profile</a></li>
+                            <li key="logout"  onClick={this._handleLogoutClick} className="nav-item"><a className="nav-link" id="4">Logout</a></li>,
+                            <li key="profile"  className="nav-item"><a href="/profile" className="nav-link" aria-current="page">Profile</a></li>
                             ] :
-                            (<li onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>)}
+                            (<li key="google"  onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>)}
                     </ul>
                 </header>
             </div>)

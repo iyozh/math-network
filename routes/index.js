@@ -1,4 +1,6 @@
 const express = require('express');
+const {getUserInfo} = require("../db_queries/user");
+const User = require('../models/index')["User"];
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -21,6 +23,16 @@ router.get("/", authCheck, (req, res) => {
     user: req.user,
     cookies: req.cookies
   });
+});
+
+router.get("/user", authCheck, (req, res) =>{
+  User.findByPk(req.user[0].id, { include: ["Tasks"] })
+      .then((user) => {
+        res.status(200).json(user);
+      })
+      .catch((err) => {
+        console.log(">> Error while finding user: ", err);
+      })
 });
 
 router.get('/express_backend', (req, res) => { //Line 9

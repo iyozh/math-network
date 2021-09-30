@@ -6,11 +6,11 @@ export default class Profile extends Component {
     state = {
         user: {},
         error: null,
-        authenticated: false
+        authenticated: true
     };
 
     componentDidMount() {
-        fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
+        fetch(`${window.env.REACT_APP_SERVER_URL}/user`, {
             method: "GET",
             credentials: "include",
             headers: {
@@ -25,8 +25,7 @@ export default class Profile extends Component {
             })
             .then(responseJson => {
                 this.setState({
-                    authenticated: true,
-                    user: responseJson.user,
+                    user: responseJson,
                 });
 
             })
