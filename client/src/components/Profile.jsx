@@ -1,6 +1,10 @@
 import Header from "./Header";
 import React, { Component } from "react";
 import ProfileInfo from "./ProfileInfo";
+import TaskTable from "./TaskTable";
+
+
+
 
 export default class Profile extends Component {
     state = {
@@ -54,6 +58,11 @@ export default class Profile extends Component {
                         authenticated={authenticated}
                         handleNotAuthenticated={this._handleNotAuthenticated}
                         user={user}
+                    />
+                </div>
+                <div>
+                    <TaskTable
+                       data = { user.Tasks }
                     />
                 </div>
             </div>
