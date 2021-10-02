@@ -1,6 +1,5 @@
 const express = require('express');
 const {getUserInfo} = require("../db_queries/user");
-const TaskTable = require("../client/src/components/TaskTable");
 const User = require('../models/index')["User"];
 const Task = require('../models/index')["Task"];
 const router = express.Router();
