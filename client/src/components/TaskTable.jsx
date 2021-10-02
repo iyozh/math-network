@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import TableHeaderColumn from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 const selectRowProp = {
@@ -21,7 +20,7 @@ const columns = [{
     text: 'Created At'
 }];
 
-class Table1 extends Component {
+class TaskTable extends Component {
     render() {
         if (!this.props.data) {
             return (<div>
@@ -37,4 +36,4 @@ class Table1 extends Component {
     }
 }
 
-export default Table1;
+export default TaskTable;
