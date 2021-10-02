@@ -39,7 +39,7 @@ router.get("/user", authCheck, (req, res) =>{
 router.get("/deleteAllTasks", authCheck, (req, res) =>{
   Task.destroy({
     where: {
-      userId: req.id
+      userId: req.user[0].id
     }
   })
 })
