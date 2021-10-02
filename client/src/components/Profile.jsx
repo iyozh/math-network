@@ -31,7 +31,6 @@ export default class Profile extends Component {
                 this.setState({
                     user: responseJson,
                 });
-
             })
             .catch(error => {
                 this.setState({

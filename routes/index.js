@@ -1,6 +1,8 @@
 const express = require('express');
 const {getUserInfo} = require("../db_queries/user");
+const TaskTable = require("../client/src/components/TaskTable");
 const User = require('../models/index')["User"];
+const Task = require('../models/index')["Task"];
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -34,6 +36,14 @@ router.get("/user", authCheck, (req, res) =>{
         console.log(">> Error while finding user: ", err);
       })
 });
+
+router.get("/deleteAllTasks", authCheck, (req, res) =>{
+  Task.destroy({
+    where: {
+      userId: req.id
+    }
+  })
+})
 
 router.get('/express_backend', (req, res) => { //Line 9
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10

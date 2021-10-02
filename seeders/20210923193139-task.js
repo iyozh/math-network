@@ -8,6 +8,20 @@ module.exports = {
       userId: 12,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      title: 'Algebra',
+      description: 'You don\'t have to be a math genius to follow along with this book!',
+      userId: 12,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      title: 'Functions',
+      description: 'Discover more than 85 of the most important mathematical ideas, theorems, and proofs ever devised with this beautifully illustrated book.',
+      userId: 12,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
   down: (queryInterface, Sequelize) => {

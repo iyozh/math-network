@@ -1,23 +1,36 @@
 import React, { Component } from 'react';
-import {BootstrapTable,
-    TableHeaderColumn} from 'react-bootstrap-table';
-import '../../node_modules/react-bootstrap-table/css/react-bootstrap-table.css'
+import BootstrapTable from 'react-bootstrap-table-next';
+import TableHeaderColumn from 'react-bootstrap-table-next';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
+const selectRowProp = {
+    mode: 'checkbox',
+    clickToSelect: true,
+    bgColor: 'gold'
+};
+
+const columns = [{
+    dataField: 'title',
+    text: 'Title',
+    headerStyle: { width: '20%'}
+}, {
+    dataField: 'description',
+    text: 'Description'
+}, {
+    dataField: 'createdAt',
+    text: 'Created At'
+}];
 
 class Table1 extends Component {
     render() {
+        if (!this.props.data) {
+            return (<div>
+                No tasks
+            </div>)
+        }
         return (
             <div>
-                <BootstrapTable data={this.props.data}>
-                    <TableHeaderColumn isKey dataField='id'>
-                        ID
-                    </TableHeaderColumn>
-                    <TableHeaderColumn dataField='title'>
-                        Title
-                    </TableHeaderColumn>
-                    <TableHeaderColumn dataField='description'>
-                        Description
-                    </TableHeaderColumn>
+                <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="title" data={ this.props.data } columns={ columns } hover selectRow={selectRowProp}>
                 </BootstrapTable>
             </div>
         );
