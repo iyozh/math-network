@@ -20,7 +20,7 @@ const columns = [{
     text: 'Created At'
 }];
 
-class TaskTable extends Component {
+export default class TaskTable extends Component {
     render() {
         if (!this.props.data) {
             return (<div>
@@ -35,5 +35,3 @@ class TaskTable extends Component {
         );
     }
 }
-
-export default TaskTable;
