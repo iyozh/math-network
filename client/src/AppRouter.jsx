@@ -10,7 +10,7 @@ export const AppRouter = () => {
             <div>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/profile" component={Profile} />
-                <Route exact path="/task/:id" component={Task} />
+                <Route exact path="/tasks/:id" component={Task} />
             </div>
         </Router>
     );

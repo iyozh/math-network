@@ -1,6 +1,7 @@
 import Header from "./Header";
 import React, { Component } from "react";
 import {Card, Col, Row} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 export default class HomePage extends Component {
     state = {
@@ -70,7 +71,7 @@ export default class HomePage extends Component {
                                 <Card>
                                     <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} />
                                     <Card.Body>
-                                        <Card.Title><a href={"task/" + task.id}>{ task.title }</a></Card.Title>
+                                        <Card.Title><Link to={"/tasks/"+ task.id}>{ task.title }</Link></Card.Title>
                                         <Card.Text>
                                             { task.description }
                                         </Card.Text>
