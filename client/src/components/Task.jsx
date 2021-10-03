@@ -1,7 +1,7 @@
 import Header from "./Header";
 import React, { Component } from "react";
 
-export default class HomePage extends Component {
+export default class Task extends Component {
     state = {
         user: {},
         error: null,
