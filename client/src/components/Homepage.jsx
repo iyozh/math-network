@@ -45,7 +45,7 @@ export default class HomePage extends Component {
             }
         }).then(tasksResponse => {
             if (tasksResponse.status === 200) return tasksResponse.json();
-            throw new Error("failed to authenticate user");
+            throw new Error("failed to load tasks");
         }).then(tasksJson => {
             this.setState({
                 tasks: tasksJson
@@ -64,13 +64,13 @@ export default class HomePage extends Component {
                     handleNotAuthenticated={this._handleNotAuthenticated}
                 />
                 <div>
-                    <Row xs={1} md={3} className="g-4">
+                    <Row md={3} className="g-4">
                         {Array.from( this.state.tasks ).map((task, idx) => (
                             <Col>
                                 <Card>
                                     <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} />
                                     <Card.Body>
-                                        <Card.Title>{ task.title }</Card.Title>
+                                        <Card.Title><a href={"task/" + task.id}>{ task.title }</a></Card.Title>
                                         <Card.Text>
                                             { task.description }
                                         </Card.Text>
