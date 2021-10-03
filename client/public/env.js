@@ -205,7 +205,7 @@ window.env = {
   "SystemRoot": "C:\\Windows",
   "TEMP": "C:\\Users\\evzhe\\AppData\\Local\\Temp",
   "TERMINAL_EMULATOR": "JetBrains-JediTerm",
-  "TERM_SESSION_ID": "9ae1ba07-4532-47c8-b47b-f7b3ca911886",
+  "TERM_SESSION_ID": "a4800e75-831a-4bf9-b216-9e76fd24c799",
   "TMP": "C:\\Users\\evzhe\\AppData\\Local\\Temp",
   "USERDOMAIN": "DESKTOP-0QELVI9",
   "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-0QELVI9",

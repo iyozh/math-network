@@ -1,5 +1,4 @@
 const express = require('express');
-const {getUserInfo} = require("../db_queries/user");
 const User = require('../models/index')["User"];
 const Task = require('../models/index')["Task"];
 const router = express.Router();

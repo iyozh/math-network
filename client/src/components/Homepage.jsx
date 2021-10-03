@@ -1,39 +1,58 @@
 import Header from "./Header";
 import React, { Component } from "react";
+import {Card, Col, Row} from "react-bootstrap";
 
 export default class HomePage extends Component {
     state = {
         user: {},
         error: null,
-        authenticated: false
+        authenticated: false,
+        tasks: []
     };
 
     componentDidMount() {
-        fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
+        Promise.all([
+            fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": true
+                }
+            })
+                .then(response => {
+                    if (response.status === 200) return response.json();
+                    throw new Error("failed to authenticate user");
+                })
+                .then(responseJson => {
+                    this.setState({
+                        authenticated: true,
+                        user: responseJson.user
+                    });
+                })
+                .catch(error => {
+                    this.setState({
+                        authenticated: false,
+                        error: "Failed to authenticate user"
+                    });
+                }),
+        fetch(`${window.env.REACT_APP_SERVER_URL}/tasks`, {
             method: "GET",
-            credentials: "include",
             headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Credentials": true
+                "Accept": "application/json",
+                "Content-type": "application/json"
             }
-        })
-            .then(response => {
-                if (response.status === 200) return response.json();
-                throw new Error("failed to authenticate user");
-            })
-            .then(responseJson => {
-                this.setState({
-                    authenticated: true,
-                    user: responseJson.user
-                });
-            })
-            .catch(error => {
-                this.setState({
-                    authenticated: false,
-                    error: "Failed to authenticate user"
-                });
+        }).then(tasksResponse => {
+            if (tasksResponse.status === 200) return tasksResponse.json();
+            throw new Error("failed to authenticate user");
+        }).then(tasksJson => {
+            this.setState({
+                tasks: tasksJson
             });
+        })
+        ])
+
     }
 
     render() {
@@ -45,14 +64,21 @@ export default class HomePage extends Component {
                     handleNotAuthenticated={this._handleNotAuthenticated}
                 />
                 <div>
-                    {!authenticated ? (
-                        <h1>Welcome!</h1>
-                    ) : (
-                        <div>
-                            <h1>You have login succcessfully!</h1>
-                            <h2>Welcome {this.state.user[0].name}!</h2>
-                        </div>
-                    )}
+                    <Row xs={1} md={3} className="g-4">
+                        {Array.from( this.state.tasks ).map((task, idx) => (
+                            <Col>
+                                <Card>
+                                    <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} />
+                                    <Card.Body>
+                                        <Card.Title>{ task.title }</Card.Title>
+                                        <Card.Text>
+                                            { task.description }
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
                 </div>
             </div>
         );

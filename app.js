@@ -9,6 +9,7 @@ const cors = require("cors");
 let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 let authRouter = require('./routes/auth');
+let tasksRouter = require('./routes/tasks')
 const config = require('./config/mainConfig');
 
 
@@ -47,6 +48,7 @@ app.use(
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
+app.use('/tasks', tasksRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'client/build')))
