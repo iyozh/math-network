@@ -12,4 +12,14 @@ router.get("/", (req, res) => {
         })
 });
 
+router.get("/:id", (req, res) => {
+    Task.findByPk(req.params.id)
+        .then((task) => {
+            res.status(200).json(task);
+        })
+        .catch((err) => {
+            console.log(">> Error while finding current task: ", err);
+        })
+});
+
 module.exports = router

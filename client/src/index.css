@@ -134,3 +134,7 @@ mark {
 .dark-color {
   color: #20247b;
 }
+
+body {
+  overflow: hidden;
+}
