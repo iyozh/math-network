@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-    Task.findByPk(req.params.id)
+    Task.findByPk(req.params.id, { include: ["User"] })
         .then((task) => {
             res.status(200).json(task);
         })

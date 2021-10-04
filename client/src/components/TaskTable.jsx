@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import {Link} from "react-router-dom";
 
 
 export default class TaskTable extends Component {
@@ -14,6 +15,13 @@ export default class TaskTable extends Component {
                 </span>
             );
         }
+        function titleFormatter(cell, row) {
+            return (
+                <span>
+                    <Link to={`/tasks/${row["id"]}`}> {cell}</Link>
+                </span>
+            )
+        }
 
         const selectRowProp = {
             mode: 'checkbox',
@@ -24,7 +32,8 @@ export default class TaskTable extends Component {
         const columns = [{
             dataField: 'title',
             text: 'Title',
-            headerStyle: { width: '20%'}
+            headerStyle: { width: '20%'},
+            formatter: titleFormatter,
         }, {
             dataField: 'description',
             text: 'Description'
