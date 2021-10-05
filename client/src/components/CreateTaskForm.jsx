@@ -25,12 +25,11 @@ export default class CreateTaskForm extends Component {
             event.stopPropagation();
         }
         this.setState({ validated: true});
-
     }
 
     render() {
         return (
-            <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/task/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
+            <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
                 <Row xs={3}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
@@ -49,7 +48,7 @@ export default class CreateTaskForm extends Component {
                     <Form.Control onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
                 </Form.Group>
                 </Row>
-                <Button type="submit">Create task!</Button>
+                <Button  type="submit">Create task!</Button>
             </Form>
         );
     }

@@ -39,7 +39,7 @@ export default class Task extends Component {
                             error: "Failed to authenticate user"
                         });
                     }),
-                fetch(`${window.env.REACT_APP_SERVER_URL}/task/${this.props.match.params.id}`, {
+                fetch(`${window.env.REACT_APP_SERVER_URL}/tasks/${this.props.match.params.id}`, {
                     method: "GET",
                     headers: {
                         "Accept": "application/json",

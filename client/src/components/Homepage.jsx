@@ -38,7 +38,7 @@ export default class HomePage extends Component {
                         error: "Failed to authenticate user"
                     });
                 }),
-        fetch(`${window.env.REACT_APP_SERVER_URL}/task`, {
+        fetch(`${window.env.REACT_APP_SERVER_URL}/tasks`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",

@@ -42,7 +42,7 @@ router.post("/create", authCheck,  (req,res) => {
         createdAt: new Date(),
         updatedAt: new Date(),
     }).then(task => {
-        res.status(200).json(task)
+        res.redirect(`/task/${task.id}`)
     })
 })
 

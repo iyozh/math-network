@@ -48,7 +48,7 @@ app.use(
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/auth', authRouter);
-app.use('/task', tasksRouter);
+app.use('/tasks', tasksRouter);
 
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, 'client/build')))
