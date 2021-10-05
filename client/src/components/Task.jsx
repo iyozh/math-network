@@ -14,7 +14,7 @@ export default class Task extends Component {
     componentDidMount() {
         Promise.all(
             [
-                fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
+                fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, {
                     method: "GET",
                     credentials: "include",
                     headers: {
@@ -39,7 +39,7 @@ export default class Task extends Component {
                             error: "Failed to authenticate user"
                         });
                     }),
-                fetch(`${window.env.REACT_APP_SERVER_URL}/tasks/${this.props.match.params.id}`, {
+                fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/${this.props.match.params.id}`, {
                     method: "GET",
                     headers: {
                         "Accept": "application/json",

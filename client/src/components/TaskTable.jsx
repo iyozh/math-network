@@ -18,7 +18,7 @@ export default class TaskTable extends Component {
         function titleFormatter(cell, row) {
             return (
                 <span>
-                    <Link to={`/tasks/${row["id"]}`}> {cell}</Link>
+                    <Link to={`/task/${row["id"]}`}> {cell}</Link>
                 </span>
             )
         }
