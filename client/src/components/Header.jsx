@@ -21,8 +21,9 @@ export default class Header extends Component {
                     <ul className="nav nav-pills">
                         <li key="home" className="nav-item"><a href="/" className="nav-link" aria-current="page">Home</a></li>
                         { authenticated ? [
+                            <li key="profile"  className="nav-item"><a href="/profile" className="nav-link" aria-current="page">Profile</a></li>,
+                            <li key="createNewTask"  className="nav-item"><a href="/createTask" className="nav-link" aria-current="page">Create Task</a></li>,
                             <li key="logout"  onClick={this._handleLogoutClick} className="nav-item"><a className="nav-link" id="4">Logout</a></li>,
-                            <li key="profile"  className="nav-item"><a href="/profile" className="nav-link" aria-current="page">Profile</a></li>
                             ] :
                             (<li key="google"  onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>)}
                     </ul>

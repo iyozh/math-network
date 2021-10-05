@@ -108,9 +108,11 @@ export default class Task extends Component {
                         </div>
                     </section>
                     { authenticated ?
+                        ((this.state.currentTask.userId !== user.id) ?
                         <SolutionForm
                             solution = {this.state.currentTask.solution }
-                        /> : <div>
+                        />: "")
+                        : <div>
                             <h2>You need to sign in to solve tasks!</h2>
                         </div>
                     }
