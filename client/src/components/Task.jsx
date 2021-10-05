@@ -39,7 +39,7 @@ export default class Task extends Component {
                             error: "Failed to authenticate user"
                         });
                     }),
-                fetch(`${window.env.REACT_APP_SERVER_URL}/tasks/${this.props.match.params.id}`, {
+                fetch(`${window.env.REACT_APP_SERVER_URL}/task/${this.props.match.params.id}`, {
                     method: "GET",
                     headers: {
                         "Accept": "application/json",
@@ -107,9 +107,14 @@ export default class Task extends Component {
 
                         </div>
                     </section>
-                    <SolutionForm
-                        solution = {this.state.currentTask.solution }
-                    />,
+                    { authenticated ?
+                        <SolutionForm
+                            solution = {this.state.currentTask.solution }
+                        /> : <div>
+                            <h2>You need to sign in to solve tasks!</h2>
+                        </div>
+                    }
+
 
                 </div>
             </div>

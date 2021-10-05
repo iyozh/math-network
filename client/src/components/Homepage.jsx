@@ -38,7 +38,7 @@ export default class HomePage extends Component {
                         error: "Failed to authenticate user"
                     });
                 }),
-        fetch(`${window.env.REACT_APP_SERVER_URL}/tasks`, {
+        fetch(`${window.env.REACT_APP_SERVER_URL}/task`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -71,7 +71,7 @@ export default class HomePage extends Component {
                                 <Card>
                                     <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} />
                                     <Card.Body>
-                                        <Card.Title><Link to={`/tasks/${task.id}`}>{ task.title }</Link></Card.Title>
+                                        <Card.Title><Link to={`/task/${task.id}`}>{ task.title }</Link></Card.Title>
                                         <Card.Text>
                                             { task.description }
                                         </Card.Text>
