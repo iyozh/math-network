@@ -1,6 +1,7 @@
 import Header from "./Header";
+import SolutionForm from "./SolutionForm"
 import React, { Component } from "react";
-require('dotenv').config()
+import {Form, Button, Row, Col, InputGroup, FormControl} from "react-bootstrap";
 
 export default class Task extends Component {
     state = {
@@ -86,7 +87,7 @@ export default class Task extends Component {
                                                     <p>22</p>
                                                 </div>
                                                 <div className="media">
-                                                    <label>User</label>
+                                                    <label>Creator</label>
                                                     <p>{ this.state.currentTask.User.name } </p>
                                                 </div>
                                                 <div className="media">
@@ -106,10 +107,19 @@ export default class Task extends Component {
 
                         </div>
                     </section>
+                    <SolutionForm
+                        solution = {this.state.currentTask.solution }
+                    />,
+
                 </div>
             </div>
         );
     }
+
+    checkSolution = () => {
+
+    }
+
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
     };
