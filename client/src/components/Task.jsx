@@ -75,12 +75,12 @@ export default class Task extends Component {
                                 <div className="col-lg-6">
                                     <div className="about-text go-to">
                                         <h3 className="dark-color">{ this.state.currentTask.title }</h3>
-                                        <p> { this.state.currentTask.description }</p>
+                                            <p> { this.state.currentTask.description }</p>
                                         <div className="row about-list">
                                             <div className="col-md-6">
                                                 <div className="media">
                                                     <label>Created</label>
-                                                    <p>{ this.state.currentTask.createdAt }</p>
+                                                        <p>{ this.state.currentTask.createdAt }</p>
                                                 </div>
                                                 <div className="media">
                                                     <label>Rating</label>

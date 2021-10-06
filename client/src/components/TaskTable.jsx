@@ -32,18 +32,19 @@ export default class TaskTable extends Component {
         const columns = [{
             dataField: 'title',
             text: 'Title',
+            style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
             headerStyle: { width: '20%'},
             formatter: titleFormatter,
         }, {
             dataField: 'description',
-            text: 'Description'
+            text: 'Description',
+            style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
         }, {
             dataField: 'createdAt',
             text: 'Created At',
             formatter: dateFormatter,
             headerStyle: { width: '10%'}
         }];
-
 
         if (!this.props.data) {
             return (<div>

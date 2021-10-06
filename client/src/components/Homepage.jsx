@@ -71,9 +71,11 @@ export default class HomePage extends Component {
                                 <Card>
                                     <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} />
                                     <Card.Body>
-                                        <Card.Title><Link to={`/task/${task.id}`}>{ task.title }</Link></Card.Title>
+                                        <Card.Title><Link to={`/task/${task.id}`}>{ task.title.length > 40 ?
+                                            `${task.title.slice(0, 35)}...` : task.title}</Link></Card.Title>
                                         <Card.Text>
-                                            { task.description }
+                                            {task.description.length > 155 ?
+                                                `${task.description.slice(0, 150)}...` : task.description}
                                         </Card.Text>
                                     </Card.Body>
                                 </Card>
