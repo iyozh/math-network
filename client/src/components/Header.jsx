@@ -25,12 +25,17 @@ export default class Header extends Component {
                             <li key="createNewTask"  className="nav-item"><a href="/createTask" className="nav-link" aria-current="page">Create Task</a></li>,
                             <li key="logout"  onClick={this._handleLogoutClick} className="nav-item"><a className="nav-link" id="4">Logout</a></li>,
                             ] :
-                            (<li key="google"  onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>)}
+                            [<li key="google"  onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>,
+                            <li key="vk"  onClick={this._handleSignInVKClick} className="nav-item"><a className="nav-link" id="5">VK</a></li>]}
                     </ul>
                 </header>
             </div>)
     }
 
+
+    _handleSignInVKClick = () => {
+        window.open(`${window.env.REACT_APP_SERVER_URL}/auth/vkontakte`, "_self")
+    }
     _handleSignInClick = () => {
         window.open(`${window.env.REACT_APP_SERVER_URL}/auth/google`, "_self");
     };

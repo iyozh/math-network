@@ -17,7 +17,24 @@ export default class SolutionForm extends Component {
     }
 
     handleSubmit(event) {
-        alert(this.state.value === this.props.solution ? "Right!" : "Wrong!");
+        let result = "";
+        this.state.value === this.props.solution ? result = "Right!" : result = "Wrong!";
+        alert(result)
+        if (result === "Right!") {
+            fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/solve`, {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": true
+                },
+                body: JSON.stringify({
+                    "taskId": this.props.taskId,
+                    "userId": this.props.userId
+                })
+            })
+        }
+
         event.preventDefault();
     }
 

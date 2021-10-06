@@ -1,5 +1,6 @@
 const express = require('express');
 const Task = require('../models/index')["Task"];
+const SolvedTask = require('../models/index')["SolvedTask"];
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -45,5 +46,14 @@ router.post("/create", authCheck,  (req,res) => {
         res.redirect(`/task/${task.id}`)
     })
 })
+
+router.post("/solve", (req, res) => {
+    SolvedTask.create({
+        UserId: req.body.userId,
+        TaskId: req.body.taskId
+    }).then(solvedTask => {
+        res.redirect(`/task/${solvedTask.TaskId}`)
+    })
+});
 
 module.exports = router
