@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     social_user_id: DataTypes.STRING,
     password: DataTypes.STRING,
-    registration_type: DataTypes.ENUM('google', 'twitter', 'vk')
+    registration_type: DataTypes.ENUM('google', 'vk')
   }, {
     sequelize,
     modelName: 'User',
