@@ -74,7 +74,7 @@ router.delete("/deleteAll", authCheck, (req, res) =>{
             userId: req.user[0].id
         }
     }).then(destroyedTasks => {
-        res.redirect("/profile")
+        res.status(200).json({message: "Tasks were deleted"})
     })
 });
 

@@ -27,7 +27,7 @@ export default class ProfileInfo extends Component {
                                             <div className="media">
                                                 <label>Started</label>
                                                 <p>
-                                                    { user.createdAt }
+                                                    { new Date(Date.parse(user.createdAt)).toLocaleDateString("nl",{year:"numeric",month:"2-digit", day:"2-digit"}) }
                                                 </p>
                                             </div>
                                             <div className="media">
@@ -57,7 +57,7 @@ export default class ProfileInfo extends Component {
                                 </div>
                                 <div className="col-6 col-lg-3">
                                     <div className="count-data text-center">
-                                        <h6 className="count h2" data-to="150" data-speed="150">150 </h6>
+                                        <h6 className="count h2" data-to="150" data-speed="150">{ user.Tasks?.length  }</h6>
                                         <p className="m-0px font-w-600">Tasks Created</p>
                                     </div>
                                 </div>

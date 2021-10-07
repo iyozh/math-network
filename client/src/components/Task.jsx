@@ -97,7 +97,7 @@ export default class Task extends Component {
                                             <div className="col-md-6">
                                                 <div className="media">
                                                     <label>Created</label>
-                                                        <p>{ this.state.currentTask.createdAt }</p>
+                                                        <p>{ new Date(Date.parse(this.state.currentTask.createdAt)).toLocaleDateString("nl",{year:"numeric",month:"2-digit", day:"2-digit"}) }</p>
                                                 </div>
                                                 <div className="media">
                                                     <label>Rating</label>

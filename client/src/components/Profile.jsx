@@ -3,14 +3,13 @@ import React, { Component } from "react";
 import ProfileInfo from "./ProfileInfo";
 import TaskTable from "./TaskTable";
 import {Button} from "react-bootstrap";
-import {withRouter} from "react-router-dom";
 
 
 export default class Profile extends Component {
 
     constructor(props) {
         super(props);
-        this. state = {
+        this.state = {
             user: {},
             error: null,
             authenticated: true
@@ -20,15 +19,18 @@ export default class Profile extends Component {
     }
 
     handleDeletingTasks(event) {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/deleteAll`, {
-            method: "DELETE",
-            credentials: "include",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Credentials": true
-            },
-        })
+        if (this.state.user.Tasks.length !== 0)
+            fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/deleteAll`, {
+                method: "DELETE",
+                credentials: "include",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Credentials": true
+                },
+            }).then(response => {
+                if (response.status === 200) window.location.reload();
+            })
     };
 
     componentDidMount() {
