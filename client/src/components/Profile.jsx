@@ -2,23 +2,41 @@ import Header from "./Header";
 import React, { Component } from "react";
 import ProfileInfo from "./ProfileInfo";
 import TaskTable from "./TaskTable";
-
-
+import {Button} from "react-bootstrap";
+import {withRouter} from "react-router-dom";
 
 
 export default class Profile extends Component {
-    state = {
-        user: {},
-        error: null,
-        authenticated: true
+
+    constructor(props) {
+        super(props);
+        this. state = {
+            user: {},
+            error: null,
+            authenticated: true
+        };
+
+        this.handleDeletingTasks = this.handleDeletingTasks.bind(this);
+    }
+
+    handleDeletingTasks(event) {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/deleteAll`, {
+            method: "DELETE",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            },
+        })
     };
 
     componentDidMount() {
-        fetch(`${window.env.REACT_APP_SERVER_URL}/user`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/user`, {
             method: "GET",
             credentials: "include",
             headers: {
-                Accept: "application/json",
+                "Accept": "application/json",
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Credentials": true
             }
@@ -59,6 +77,7 @@ export default class Profile extends Component {
                         user={user}
                     />
                 </div>
+                <Button onClick={this.handleDeletingTasks} variant="outline-danger">Delete All Tasks</Button>
                 <div>
                     <TaskTable
                        data = { user.Tasks }
@@ -68,6 +87,8 @@ export default class Profile extends Component {
 
         );
     }
+
+
 
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });

@@ -68,4 +68,14 @@ router.get("/solved/:id", (req, res) => {
         })
 });
 
+router.delete("/deleteAll", authCheck, (req, res) =>{
+    Task.destroy({
+        where: {
+            userId: req.user[0].id
+        }
+    }).then(destroyedTasks => {
+        res.redirect("/profile")
+    })
+});
+
 module.exports = router

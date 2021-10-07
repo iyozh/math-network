@@ -35,14 +35,6 @@ router.get("/user", authCheck, (req, res) =>{
       })
 });
 
-router.get("/deleteAllTasks", authCheck, (req, res) =>{
-  Task.destroy({
-    where: {
-      userId: req.user[0].id
-    }
-  })
-})
-
 router.get('/express_backend', (req, res) => { //Line 9
   res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' }); //Line 10
 }); //Line 11
