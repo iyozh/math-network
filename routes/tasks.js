@@ -56,4 +56,16 @@ router.post("/solve", (req, res) => {
     })
 });
 
+router.get("/solved/:id", (req, res) => {
+    SolvedTask.findAll({where:{
+        TaskId: req.params.id
+    }})
+        .then(taskArray => {
+            res.status(200).json(taskArray);
+        })
+        .catch((err) => {
+            console.log(">> Error while finding current task: ", err);
+        })
+});
+
 module.exports = router

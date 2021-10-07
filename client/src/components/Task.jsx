@@ -8,7 +8,8 @@ export default class Task extends Component {
         user: [],
         error: null,
         authenticated: false,
-        currentTask: {}
+        currentTask: {},
+        solvedBy: [],
     };
 
     componentDidMount() {
@@ -53,13 +54,29 @@ export default class Task extends Component {
                     this.setState({
                         currentTask: tasksJson
                     });
-                })
+                }),
+                fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/solved/${this.props.match.params.id}`, {
+                    method: "GET",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-type": "application/json"
+                    }
+                }).then(tasksResponse => {
+                    if (tasksResponse.status === 200) return tasksResponse.json();
+                    throw new Error("failed to load task");
+
+                }).then(tasksJson => {
+                    this.setState({
+                        solvedBy: tasksJson
+                    });
+                }),
             ])
     }
 
     render() {
         const { authenticated } = this.state;
         const { user } = this.state
+        const { solvedBy } = this.state
         if (!this.state.currentTask.User)
             return (<div></div>)
         return (
@@ -92,7 +109,7 @@ export default class Task extends Component {
                                                 </div>
                                                 <div className="media">
                                                     <label>Solutions</label>
-                                                    <p>5</p>
+                                                    <p>{ solvedBy.length}</p>
                                                 </div>
                                             </div>
                                         </div>
