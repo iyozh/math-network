@@ -32,7 +32,8 @@ export default class SolutionForm extends Component {
                     "taskId": this.props.taskId,
                     "userId": this.props.userId
                 })
-            })
+            });
+            window.location.reload()
         }
 
         event.preventDefault();

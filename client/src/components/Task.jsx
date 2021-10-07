@@ -126,6 +126,8 @@ export default class Task extends Component {
                     </section>
                     { authenticated ?
                         ((this.state.currentTask.userId !== user.id) ?
+                            (solvedBy.find((item) =>  item.UserId === user.id)) ?
+                                <h2>You complete this!✔️</h2> :
                         <SolutionForm
                             solution = {this.state.currentTask.solution }
                             taskId = { this.state.currentTask.id }
