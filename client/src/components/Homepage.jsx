@@ -5,19 +5,18 @@ import {Link} from "react-router-dom";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyles} from "./themeUtils/global";
 import {darkTheme, lightTheme} from "./themeUtils/theme";
+import withMyHook from "./hooksUtils/themeHOC"
+import Toggle from "./themeUtils/Toggle";
 
-export default class HomePage extends Component {
+class HomePage extends Component {
     state = {
         user: {},
         error: null,
         authenticated: false,
         tasks: [],
-        theme: ''
     };
 
     componentDidMount() {
-        const localTheme = window.localStorage.getItem('theme');
-        localTheme && this.setState({theme:localTheme});
         Promise.all([
             fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
                 method: "GET",
@@ -64,10 +63,11 @@ export default class HomePage extends Component {
 
     render() {
         const { authenticated } = this.state;
+        const [theme, toggleTheme] = this.props.switchTheme;
         return (
-            <ThemeProvider theme = {this.state.theme === 'light' ? lightTheme : darkTheme}>
+            <ThemeProvider theme = {theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
-            <button onClick={this.toggleTheme} type="button" className="btn btn-outline-dark">Switch Theme</button>
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <Header
                     authenticated={authenticated}
@@ -101,15 +101,17 @@ export default class HomePage extends Component {
         this.setState({ authenticated: false });
     };
 
-   toggleTheme = () => {
-        if (this.state.theme === 'light') {
-            window.localStorage.setItem('theme', 'dark');
-            this.setState({theme: 'dark'});
-        }
-         else {
-            window.localStorage.setItem('theme', 'light')
-            this.setState({theme: 'light'})
-        }
-
-    }
+   // toggleTheme = () => {
+   //      if (this.state.theme === 'light') {
+   //          window.localStorage.setItem('theme', 'dark');
+   //          this.setState({theme: 'dark'});
+   //      }
+   //       else {
+   //          window.localStorage.setItem('theme', 'light')
+   //          this.setState({theme: 'light'})
+   //      }
+   //
+   //  }
 }
+
+export default withMyHook(HomePage);
