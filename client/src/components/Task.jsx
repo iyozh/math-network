@@ -2,8 +2,13 @@ import Header from "./Header";
 import SolutionForm from "./SolutionForm"
 import React, { Component } from "react";
 import {Form, Button, Row, Col, InputGroup, FormControl} from "react-bootstrap";
+import {darkTheme, lightTheme} from "./themeUtils/theme";
+import {GlobalStyles} from "./themeUtils/global";
+import Toggle from "./themeUtils/Toggle";
+import {ThemeProvider} from "styled-components";
+import withTheme from "./hooksUtils/themeHOC";
 
-export default class Task extends Component {
+class Task extends Component {
     state = {
         user: [],
         error: null,
@@ -77,9 +82,13 @@ export default class Task extends Component {
         const { authenticated } = this.state;
         const { user } = this.state
         const { solvedBy } = this.state
+        const [theme, toggleTheme] = this.props.switchTheme;
         if (!this.state.currentTask.User)
             return (<div></div>)
         return (
+            <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
+                <GlobalStyles />
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <Header
                     authenticated={authenticated}
@@ -141,6 +150,7 @@ export default class Task extends Component {
 
                 </div>
             </div>
+            </ThemeProvider>
         );
     }
 
@@ -152,3 +162,5 @@ export default class Task extends Component {
         this.setState({ authenticated: false });
     };
 }
+
+export default withTheme(Task)

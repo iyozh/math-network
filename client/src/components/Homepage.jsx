@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {ThemeProvider} from "styled-components";
 import {GlobalStyles} from "./themeUtils/global";
 import {darkTheme, lightTheme} from "./themeUtils/theme";
-import withMyHook from "./hooksUtils/themeHOC"
+import withTheme from "./hooksUtils/themeHOC"
 import Toggle from "./themeUtils/Toggle";
 
 class HomePage extends Component {
@@ -100,18 +100,6 @@ class HomePage extends Component {
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
     };
-
-   // toggleTheme = () => {
-   //      if (this.state.theme === 'light') {
-   //          window.localStorage.setItem('theme', 'dark');
-   //          this.setState({theme: 'dark'});
-   //      }
-   //       else {
-   //          window.localStorage.setItem('theme', 'light')
-   //          this.setState({theme: 'light'})
-   //      }
-   //
-   //  }
 }
 
-export default withMyHook(HomePage);
+export default withTheme(HomePage);

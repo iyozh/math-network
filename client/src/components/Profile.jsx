@@ -3,12 +3,14 @@ import React, { Component } from "react";
 import ProfileInfo from "./ProfileInfo";
 import TaskTable from "./TaskTable";
 import {Button} from "react-bootstrap";
-import {darkTheme} from "./themeUtils/theme";
+import {darkTheme, lightTheme} from "./themeUtils/theme";
 import {GlobalStyles} from "./themeUtils/global";
 import {ThemeProvider} from "styled-components";
+import Toggle from "./themeUtils/Toggle";
+import withTheme from "./hooksUtils/themeHOC";
 
 
-export default class Profile extends Component {
+class Profile extends Component {
 
     constructor(props) {
         super(props);
@@ -67,9 +69,11 @@ export default class Profile extends Component {
     render() {
         const { authenticated } = this.state;
         const { user } = this.state;
+        const [theme, toggleTheme] = this.props.switchTheme;
         return (
-            <ThemeProvider theme={darkTheme}>
+            <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
+            <Toggle theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <div>
                     <Header
@@ -101,3 +105,5 @@ export default class Profile extends Component {
         this.setState({ authenticated: false });
     };
 }
+
+export default withTheme(Profile)

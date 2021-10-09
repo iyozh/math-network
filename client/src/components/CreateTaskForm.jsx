@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import {Button, Card, Col, Form, Row} from "react-bootstrap";
 import Header from "./Header";
+import {darkTheme, lightTheme} from "./themeUtils/theme";
+import {GlobalStyles} from "./themeUtils/global";
+import Toggle from "./themeUtils/Toggle";
+import {ThemeProvider} from "styled-components";
+import withTheme from "./hooksUtils/themeHOC";
 
-export default class CreateTaskForm extends Component {
+class CreateTaskForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -59,12 +64,16 @@ export default class CreateTaskForm extends Component {
 
     render() {
         const {authenticated} = this.state
+        const [theme, toggleTheme] = this.props.switchTheme;
         return (
+            <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
+                <GlobalStyles />
+                <Toggle theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <Header
                     authenticated={authenticated}
                     handleNotAuthenticated={this._handleNotAuthenticated}
-                />,
+                />
                 <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
                     <Row xs={3}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -87,7 +96,9 @@ export default class CreateTaskForm extends Component {
                     <Button  type="submit">Create task!</Button>
                 </Form>
             </div>
-
+            </ThemeProvider>
         );
     }
 }
+
+export default withTheme(CreateTaskForm);
