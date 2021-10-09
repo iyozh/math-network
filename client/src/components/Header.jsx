@@ -27,6 +27,7 @@ export default class Header extends Component {
                             ] :
                             [<li key="google"  onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>,
                             <li key="vk"  onClick={this._handleSignInVKClick} className="nav-item"><a className="nav-link" id="5">VK</a></li>]}
+                        <li onClick={this.toggleTheme} key="theme" className="nav-item"><a className="nav-link" aria-current="page">Toggle Theme</a></li>
                     </ul>
                 </header>
             </div>)

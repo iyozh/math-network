@@ -3,6 +3,9 @@ import React, { Component } from "react";
 import ProfileInfo from "./ProfileInfo";
 import TaskTable from "./TaskTable";
 import {Button} from "react-bootstrap";
+import {darkTheme} from "./themeUtils/theme";
+import {GlobalStyles} from "./themeUtils/global";
+import {ThemeProvider} from "styled-components";
 
 
 export default class Profile extends Component {
@@ -65,12 +68,14 @@ export default class Profile extends Component {
         const { authenticated } = this.state;
         const { user } = this.state;
         return (
+            <ThemeProvider theme={darkTheme}>
+                <GlobalStyles />
             <div>
                 <div>
                     <Header
                         authenticated={authenticated}
                         handleNotAuthenticated={this._handleNotAuthenticated}
-                    />,
+                    />
                 </div>
                 <div>
                     <ProfileInfo
@@ -86,7 +91,7 @@ export default class Profile extends Component {
                     />
                 </div>
             </div>
-
+        </ThemeProvider>
         );
     }
 

@@ -2,16 +2,22 @@ import Header from "./Header";
 import React, { Component } from "react";
 import {Card, Col, Row} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {ThemeProvider} from "styled-components";
+import {GlobalStyles} from "./themeUtils/global";
+import {darkTheme, lightTheme} from "./themeUtils/theme";
 
 export default class HomePage extends Component {
     state = {
         user: {},
         error: null,
         authenticated: false,
-        tasks: []
+        tasks: [],
+        theme: ''
     };
 
     componentDidMount() {
+        const localTheme = window.localStorage.getItem('theme');
+        localTheme && this.setState({theme:localTheme});
         Promise.all([
             fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
                 method: "GET",
@@ -59,6 +65,9 @@ export default class HomePage extends Component {
     render() {
         const { authenticated } = this.state;
         return (
+            <ThemeProvider theme = {this.state.theme === 'light' ? lightTheme : darkTheme}>
+            <GlobalStyles />
+            <button onClick={this.toggleTheme} type="button" className="btn btn-outline-dark">Switch Theme</button>
             <div>
                 <Header
                     authenticated={authenticated}
@@ -84,10 +93,23 @@ export default class HomePage extends Component {
                     </Row>
                 </div>
             </div>
+            </ThemeProvider>
         );
     }
 
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
     };
+
+   toggleTheme = () => {
+        if (this.state.theme === 'light') {
+            window.localStorage.setItem('theme', 'dark');
+            this.setState({theme: 'dark'});
+        }
+         else {
+            window.localStorage.setItem('theme', 'light')
+            this.setState({theme: 'light'})
+        }
+
+    }
 }
