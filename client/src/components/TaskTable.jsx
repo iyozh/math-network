@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import {Link} from "react-router-dom";
+import {withTranslation} from "react-i18next";
 
 
-export default class TaskTable extends Component {
+class TaskTable extends Component {
 
     render() {
         function dateFormatter(cell, row) {
@@ -28,20 +29,20 @@ export default class TaskTable extends Component {
             clickToSelect: true,
             bgColor: 'gold',
         };
-
+        const { t } = this.props
         const columns = [{
             dataField: 'title',
-            text: 'Title',
+            text: t('taskTable.title'),
             style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
             headerStyle: { width: '20%'},
             formatter: titleFormatter,
         }, {
             dataField: 'description',
-            text: 'Description',
+            text: t('taskTable.description'),
             style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
         }, {
             dataField: 'createdAt',
-            text: 'Created At',
+            text: t('taskTable.createdAt'),
             formatter: dateFormatter,
             headerStyle: { width: '10%'}
         }];
@@ -59,3 +60,4 @@ export default class TaskTable extends Component {
         );
     }
 }
+export default withTranslation()(TaskTable);

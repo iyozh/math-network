@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {Button, Col, Form, Row} from "react-bootstrap";
+import {withTranslation} from "react-i18next";
 
-export default class SolutionForm extends Component {
+class SolutionForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -17,10 +18,9 @@ export default class SolutionForm extends Component {
     }
 
     handleSubmit(event) {
-        let result = "";
-        this.state.value === this.props.solution ? result = "Right!" : result = "Wrong!";
-        alert(result)
-        if (result === "Right!") {
+        const { t } = this.props
+        if  (this.state.value === this.props.solution) {
+            alert(t('task.right'));
             fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/solve`, {
                 method: "POST",
                 headers: {
@@ -35,11 +35,14 @@ export default class SolutionForm extends Component {
             });
             window.location.reload()
         }
+        else
+            alert(t('task.wrong'));
 
         event.preventDefault();
     }
 
     render() {
+        const {t} = this.props
         return (
             <Form onSubmit={this.handleSubmit}>
                 <Row className="align-items-center">
@@ -50,12 +53,12 @@ export default class SolutionForm extends Component {
                         <Form.Control value={this.state.value} onChange={this.handleChange}
                             className="mb-2"
                             id="inlineFormInput"
-                            placeholder="Input your answer"
+                            placeholder={t('task.checkPlaceHolder')}
                         />
                     </Col>
                     <Col xs="auto">
                         <Button type="submit" className="mb-2">
-                            Check the solution!
+                            {t('task.checkSolution')}
                         </Button>
                     </Col>
                 </Row>
@@ -63,3 +66,5 @@ export default class SolutionForm extends Component {
         );
     }
 }
+
+export default withTranslation()(SolutionForm);

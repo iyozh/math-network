@@ -1,0 +1,45 @@
+{
+  "translations": {
+    "navbar": {
+      "home": "Home",
+      "logout": "Logout",
+      "createTask": "Create Task",
+      "theme": "Switch Theme",
+      "profile": "Profile"
+    },
+    "profile": {
+      "started": "Started",
+      "loginVia": "Login via",
+      "completed": "Tasks Completed",
+      "created": "Tasks Created",
+      "rating": "Average Rating",
+      "likes": "Likes"
+    },
+    "taskTable": {
+      "deleteTasks": "Delete All Tasks",
+      "title": "Title",
+      "description": "Description",
+      "createdAt": "Created At"
+    },
+    "task": {
+      "created": "Created",
+      "rating": "Rating",
+      "creator": "Creator",
+      "solutions": "Solutions",
+      "signInWarning": "You need to sign in to solve tasks!",
+      "solvedMessage": "You complete this!",
+      "right": "Right!",
+      "wrong": "Wrong!",
+      "checkSolution": "Check the solution!",
+      "checkPlaceHolder": "Input your answer"
+    },
+    "createTask": {
+      "title": "Title",
+      "description": "Description",
+      "solution": "Solution",
+      "titlePlaceHolder": "Solve the task using Pythagoras theorem",
+      "descriptionPlaceHolder": "Points (-2, -3), (2, 1), (5, -2) are given in a rectangular coordinate system on a plane. Find out if they are the vertices of a right triangle.",
+      "createButton": "Create task!"
+    }
+  }
+}

@@ -6,6 +6,7 @@ import {GlobalStyles} from "./themeUtils/global";
 import Toggle from "./themeUtils/Toggle";
 import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
+import {withTranslation} from "react-i18next";
 
 class CreateTaskForm extends Component {
     constructor(props) {
@@ -65,6 +66,7 @@ class CreateTaskForm extends Component {
     render() {
         const {authenticated} = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
+        const {t} = this.props
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
@@ -77,23 +79,23 @@ class CreateTaskForm extends Component {
                 <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
                     <Row xs={3}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Title</Form.Label>
-                            <Form.Control maxLength="100" onChange={this.handleOnChange} name='title' value={this.state.title} required type="text" placeholder="Solve the task using pythagoras theorem" />
+                            <Form.Label>{t('createTask.title')}</Form.Label>
+                            <Form.Control maxLength="100" onChange={this.handleOnChange} name='title' value={this.state.title} required type="text" placeholder={t('createTask.titlePlaceHolder')} />
                         </Form.Group>
                     </Row>
                     <Row xs={2}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>Description of the task</Form.Label>
-                            <Form.Control maxLength="750" onChange={this.handleOnChange} name='description' required value={this.state.description} as="textarea" placeholder="Points (-2, -3), (2, 1), (5, -2) are given in a rectangular coordinate system on a plane. Find out if they are the vertices of a right triangle." rows={3} />
+                            <Form.Label>{t('createTask.description')}</Form.Label>
+                            <Form.Control maxLength="750" onChange={this.handleOnChange} name='description' required value={this.state.description} as="textarea" placeholder={t('createTask.descriptionPlaceHolder')} rows={3} />
                         </Form.Group>
                     </Row>
                     <Row xs={4}>
                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Solution</Form.Label>
+                            <Form.Label>{t('createTask.solution')}</Form.Label>
                             <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
                         </Form.Group>
                     </Row>
-                    <Button  type="submit">Create task!</Button>
+                    <Button  type="submit">{t('createTask.createButton')}</Button>
                 </Form>
             </div>
             </ThemeProvider>
@@ -101,4 +103,4 @@ class CreateTaskForm extends Component {
     }
 }
 
-export default withTheme(CreateTaskForm);
+export default withTranslation()(withTheme(CreateTaskForm));

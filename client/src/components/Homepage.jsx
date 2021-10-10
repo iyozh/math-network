@@ -7,6 +7,7 @@ import {GlobalStyles} from "./themeUtils/global";
 import {darkTheme, lightTheme} from "./themeUtils/theme";
 import withTheme from "./hooksUtils/themeHOC"
 import Toggle from "./themeUtils/Toggle";
+import {withTranslation} from "react-i18next";
 
 class HomePage extends Component {
     state = {
@@ -61,6 +62,7 @@ class HomePage extends Component {
 
     }
 
+
     render() {
         const { authenticated } = this.state;
         const [theme, toggleTheme] = this.props.switchTheme;
@@ -102,4 +104,4 @@ class HomePage extends Component {
     };
 }
 
-export default withTheme(HomePage);
+export default withTranslation()(withTheme(HomePage));

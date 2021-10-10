@@ -1,12 +1,12 @@
 import Header from "./Header";
 import SolutionForm from "./SolutionForm"
 import React, { Component } from "react";
-import {Form, Button, Row, Col, InputGroup, FormControl} from "react-bootstrap";
 import {darkTheme, lightTheme} from "./themeUtils/theme";
 import {GlobalStyles} from "./themeUtils/global";
 import Toggle from "./themeUtils/Toggle";
 import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
+import {withTranslation} from "react-i18next";
 
 class Task extends Component {
     state = {
@@ -83,6 +83,7 @@ class Task extends Component {
         const { user } = this.state
         const { solvedBy } = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
+        const { t } = this.props
         if (!this.state.currentTask.User)
             return (<div></div>)
         return (
@@ -105,19 +106,19 @@ class Task extends Component {
                                         <div className="row about-list">
                                             <div className="col-md-6">
                                                 <div className="media">
-                                                    <label>Created</label>
+                                                    <label>{t('task.created')}</label>
                                                         <p>{ new Date(Date.parse(this.state.currentTask.createdAt)).toLocaleDateString("nl",{year:"numeric",month:"2-digit", day:"2-digit"}) }</p>
                                                 </div>
                                                 <div className="media">
-                                                    <label>Rating</label>
+                                                    <label>{t('task.rating')}</label>
                                                     <p>22</p>
                                                 </div>
                                                 <div className="media">
-                                                    <label>Creator</label>
+                                                    <label>{t('task.creator')}</label>
                                                     <p>{ this.state.currentTask.User.name } </p>
                                                 </div>
                                                 <div className="media">
-                                                    <label>Solutions</label>
+                                                    <label>{t('task.solutions')}</label>
                                                     <p>{ solvedBy.length}</p>
                                                 </div>
                                             </div>
@@ -136,26 +137,20 @@ class Task extends Component {
                     { authenticated ?
                         ((this.state.currentTask.userId !== user.id) ?
                             (solvedBy.find((item) =>  item.UserId === user.id)) ?
-                                <h2>You complete this!✔️</h2> :
+                                <h2>{t('task.solvedMessage')}✔️</h2> :
                         <SolutionForm
                             solution = {this.state.currentTask.solution }
                             taskId = { this.state.currentTask.id }
                             userId = { user.id }
                         />: "")
                         : <div>
-                            <h2>You need to sign in to solve tasks!</h2>
+                            <h2>{t('task.signInWarning')}</h2>
                         </div>
                     }
-
-
                 </div>
             </div>
             </ThemeProvider>
         );
-    }
-
-    checkSolution = () => {
-
     }
 
     _handleNotAuthenticated = () => {
@@ -163,4 +158,4 @@ class Task extends Component {
     };
 }
 
-export default withTheme(Task)
+export default withTranslation()(withTheme(Task));

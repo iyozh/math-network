@@ -8,6 +8,7 @@ import {GlobalStyles} from "./themeUtils/global";
 import {ThemeProvider} from "styled-components";
 import Toggle from "./themeUtils/Toggle";
 import withTheme from "./hooksUtils/themeHOC";
+import {withTranslation} from "react-i18next";
 
 
 class Profile extends Component {
@@ -17,7 +18,7 @@ class Profile extends Component {
         this.state = {
             user: {},
             error: null,
-            authenticated: true
+            authenticated: true,
         };
 
         this.handleDeletingTasks = this.handleDeletingTasks.bind(this);
@@ -70,6 +71,7 @@ class Profile extends Component {
         const { authenticated } = this.state;
         const { user } = this.state;
         const [theme, toggleTheme] = this.props.switchTheme;
+        const { t } = this.props
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
@@ -88,7 +90,7 @@ class Profile extends Component {
                         user={user}
                     />
                 </div>
-                <Button onClick={this.handleDeletingTasks} variant="outline-danger">Delete All Tasks</Button>
+                <Button onClick={this.handleDeletingTasks} variant="outline-danger">{t('taskTable.deleteTasks')}</Button>
                 <div>
                     <TaskTable
                        data = { user.Tasks }
@@ -106,4 +108,4 @@ class Profile extends Component {
     };
 }
 
-export default withTheme(Profile)
+export default withTranslation()(withTheme(Profile));
