@@ -15,7 +15,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", (req, res) => {
-    Task.findAll({order:[["createdAt","DESC"]]})
+    Task.findAll({ include: ["User"], order:[["createdAt","DESC"]]})
         .then((task) => {
             res.status(200).json(task);
         })

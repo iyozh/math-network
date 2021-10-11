@@ -18,6 +18,9 @@
       "rating": "Average Rating",
       "likes": "Likes"
     },
+    "card": {
+      "createdBy": "Created By "
+    },
     "taskTable": {
       "deleteTasks": "Delete All Tasks",
       "title": "Title",

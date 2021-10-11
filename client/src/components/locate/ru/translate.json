@@ -18,6 +18,9 @@
       "rating": "Рейтинг задач",
       "likes": "Лайки"
     },
+    "card": {
+      "createdBy": "Пользователь: "
+    },
     "taskTable": {
       "deleteTasks": "Удалить все задачи",
       "title": "Заголовок",
