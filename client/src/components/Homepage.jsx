@@ -8,6 +8,7 @@ import {darkTheme, lightTheme} from "./themeUtils/theme";
 import withTheme from "./hooksUtils/themeHOC"
 import Toggle from "./themeUtils/Toggle";
 import {withTranslation} from "react-i18next";
+import ReactStars from "react-rating-stars-component/dist/react-stars";
 
 class HomePage extends Component {
     state = {
@@ -67,6 +68,7 @@ class HomePage extends Component {
         const { authenticated } = this.state;
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
+        console.log(this.state.tasks)
         return (
             <ThemeProvider theme = {theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
@@ -90,6 +92,13 @@ class HomePage extends Component {
                                                 `${task.description.slice(0, 150)}...` : task.description}
                                         </Card.Text>
                                         <Card.Subtitle>{t('card.createdBy')}<b>{task.User.name}</b></Card.Subtitle>
+                                            <ReactStars
+                                                value={ task.TasksRatings ? task.TasksRatings[0]?.rating : 0 }
+                                                count={5}
+                                                onChange={this.ratingChanged}
+                                                size={24}
+                                                activeColor="#ffd700"
+                                            />
                                     </Card.Body>
                                 </Card>
                             </Col>
@@ -103,6 +112,23 @@ class HomePage extends Component {
 
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
+    };
+
+    ratingChanged = (newRating) => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/setupRating`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            },
+            body: JSON.stringify({
+                "rating": newRating,
+            })
+        }).then(response => {
+
+        })
     };
 }
 

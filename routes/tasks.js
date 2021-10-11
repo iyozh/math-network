@@ -1,6 +1,7 @@
 const express = require('express');
 const Task = require('../models/index')["Task"];
 const SolvedTask = require('../models/index')["SolvedTask"];
+const TasksRating = require('../models/index')["TasksRating"];
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -15,7 +16,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", (req, res) => {
-    Task.findAll({ include: ["User"], order:[["createdAt","DESC"]]})
+    Task.findAll({ include: ["User", "TasksRatings"], order:[["createdAt","DESC"]]})
         .then((task) => {
             res.status(200).json(task);
         })
@@ -44,6 +45,16 @@ router.post("/create", authCheck,  (req,res) => {
         updatedAt: new Date(),
     }).then(task => {
         res.redirect(`/task/${task.id}`)
+    })
+})
+
+router.post("/setupRating", authCheck,  (req,res) => {
+    TasksRating.create( {
+        rating: req.body.rating,
+        taskId: 2,
+        UserId: req.user[0].id,
+        createdAt: new Date(),
+        updatedAt: new Date(),
     })
 })
 
