@@ -16,7 +16,8 @@ class CreateTaskForm extends Component {
             title: "",
             description: "",
             solution: "",
-            authenticated: false
+            authenticated: false,
+            user: {}
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,37 +68,42 @@ class CreateTaskForm extends Component {
         const {authenticated} = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
         const {t} = this.props
+        const {user} = this.state
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
                 <Toggle t={t} theme={theme} toggleTheme={toggleTheme} />
-            <div>
-                <Header
-                    authenticated={authenticated}
-                    handleNotAuthenticated={this._handleNotAuthenticated}
-                />
-                <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
-                    <Row xs={3}>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>{t('createTask.title')}</Form.Label>
-                            <Form.Control maxLength="100" onChange={this.handleOnChange} name='title' value={this.state.title} required type="text" placeholder={t('createTask.titlePlaceHolder')} />
-                        </Form.Group>
-                    </Row>
-                    <Row xs={2}>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                            <Form.Label>{t('createTask.description')}</Form.Label>
-                            <Form.Control maxLength="750" onChange={this.handleOnChange} name='description' required value={this.state.description} as="textarea" placeholder={t('createTask.descriptionPlaceHolder')} rows={3} />
-                        </Form.Group>
-                    </Row>
-                    <Row xs={4}>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>{t('createTask.solution')}</Form.Label>
-                            <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
-                        </Form.Group>
-                    </Row>
-                    <Button  type="submit">{t('createTask.createButton')}</Button>
-                </Form>
-            </div>
+
+                        <div>
+                            <Header
+                                authenticated={authenticated}
+                                handleNotAuthenticated={this._handleNotAuthenticated}
+                            />
+                            {(!Object.keys(user).length) ? "You need to sign in to see this page" :
+                            <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
+                                <Row xs={3}>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                        <Form.Label>{t('createTask.title')}</Form.Label>
+                                        <Form.Control maxLength="100" onChange={this.handleOnChange} name='title' value={this.state.title} required type="text" placeholder={t('createTask.titlePlaceHolder')} />
+                                    </Form.Group>
+                                </Row>
+                                <Row xs={2}>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                        <Form.Label>{t('createTask.description')}</Form.Label>
+                                        <Form.Control maxLength="750" onChange={this.handleOnChange} name='description' required value={this.state.description} as="textarea" placeholder={t('createTask.descriptionPlaceHolder')} rows={3} />
+                                    </Form.Group>
+                                </Row>
+                                <Row xs={4}>
+                                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                        <Form.Label>{t('createTask.solution')}</Form.Label>
+                                        <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
+                                    </Form.Group>
+                                </Row>
+                                <Button  type="submit">{t('createTask.createButton')}</Button>
+                            </Form>
+                            }
+                        </div>
+
             </ThemeProvider>
         );
     }
