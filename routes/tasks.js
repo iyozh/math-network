@@ -15,7 +15,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", (req, res) => {
-    Task.findAll()
+    Task.findAll({order:[["createdAt","DESC"]]})
         .then((task) => {
             res.status(200).json(task);
         })

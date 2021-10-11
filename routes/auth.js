@@ -8,7 +8,7 @@ router.get('/google',
     passport.authenticate('google', {scope: ['profile', 'email']}));
 
 router.get('/google/callback',
-    passport.authenticate('google', {failureRedirect: '/login'}),
+    passport.authenticate('google', {failureRedirect: '/'}),
     function (req, res) {
         res.redirect("/");
     });
@@ -20,7 +20,7 @@ router.get(
     "/vkontakte/callback",
     passport.authenticate("vkontakte", {
         successRedirect: "/",
-        failureRedirect: "/login",
+        failureRedirect: "/",
     })
 );
 
