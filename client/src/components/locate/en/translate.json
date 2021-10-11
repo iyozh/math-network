@@ -5,7 +5,10 @@
       "logout": "Logout",
       "createTask": "Create Task",
       "theme": "Switch Theme",
-      "profile": "Profile"
+      "profile": "Profile",
+      "switchTheme": "Switch Theme",
+      "russian": "Russian",
+      "english": "English"
     },
     "profile": {
       "started": "Started",

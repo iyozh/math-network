@@ -24,8 +24,10 @@ class Header extends Component {
         const {t} = this.props
         const { authenticated } = this.props;
         return (
+            <div>
+                { this.renderRadioButtons() }
                 <div className="container">
-                    { this.renderRadioButtons() }
+
                     <header className="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
                         <a href="/"
                            className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
@@ -42,10 +44,12 @@ class Header extends Component {
                                     <li key="logout"  onClick={this._handleLogoutClick} className="nav-item"><a className="nav-link" id="4">{t('navbar.logout')}</a></li>,
                                 ] :
                                 [<li key="google"  onClick={this._handleSignInClick} className="nav-item"><a className="nav-link" id="2">Google</a></li>,
-                                <li key="vk"  onClick={this._handleSignInVKClick} className="nav-item"><a className="nav-link" id="5">VK</a></li>]}
+                                    <li key="vk"  onClick={this._handleSignInVKClick} className="nav-item"><a className="nav-link" id="5">VK</a></li>]}
                         </ul>
                     </header>
                 </div>
+            </div>
+
            )
     }
 
@@ -69,13 +73,17 @@ class Header extends Component {
     }
 
     renderRadioButtons = () => {
+        const { t } = this.props
         return (
-            <div><input
+            [<div className="form-check"><input className="form-check-input"
                 checked={this.state.localizationValue === 'en'}
-                name="language" onChange={(e) => this.onLanguageHandle(e)} value="en" type="radio" />English &nbsp;
-                <input name="language" value="ru"
+                name="language" onChange={(e) => this.onLanguageHandle(e)} value="en" type="radio" />{t('navbar.english')} &nbsp;
+            </div>,
+            <div className="form-check">
+                <input name="language" value="ru" className="form-check-input"
                        checked={this.state.localizationValue === 'ru'}
-                       type="radio" onChange={(e) => this.onLanguageHandle(e)} />Russian</div>
+                       type="radio" onChange={(e) => this.onLanguageHandle(e)} />{t('navbar.russian')}
+            </div>]
         )
     }
 }

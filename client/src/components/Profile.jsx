@@ -75,7 +75,7 @@ class Profile extends Component {
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
+            <Toggle t={t} theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <div>
                     <Header
@@ -83,19 +83,20 @@ class Profile extends Component {
                         handleNotAuthenticated={this._handleNotAuthenticated}
                     />
                 </div>
-                <div>
-                    <ProfileInfo
-                        authenticated={authenticated}
-                        handleNotAuthenticated={this._handleNotAuthenticated}
-                        user={user}
-                    />
-                </div>
-                <Button onClick={this.handleDeletingTasks} variant="outline-danger">{t('taskTable.deleteTasks')}</Button>
-                <div>
-                    <TaskTable
-                       data = { user.Tasks }
-                    />
-                </div>
+                {
+                    Object.keys(user).length ?
+                        [<div>
+                            <ProfileInfo
+                                authenticated={authenticated}
+                                handleNotAuthenticated={this._handleNotAuthenticated}
+                                user={user}
+                            />
+                        </div>,
+                        <Button onClick={this.handleDeletingTasks} variant="outline-danger">{t('taskTable.deleteTasks')}</Button>,
+                    <div>
+                    <TaskTable  data = { user.Tasks }/>
+                </div>] : <div>You need to login to see this page</div>
+                }
             </div>
         </ThemeProvider>
         );

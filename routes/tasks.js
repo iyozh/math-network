@@ -64,9 +64,22 @@ router.get("/solved/:id", (req, res) => {
             res.status(200).json(taskArray);
         })
         .catch((err) => {
-            console.log(">> Error while finding current task: ", err);
+            console.log(">> Error while finding tasks: ", err);
         })
 });
+
+router.get("/solved/user/:id", (req, res) => {
+    SolvedTask.findAll({where:{
+            UserId: req.params.id
+        }})
+        .then(taskArray => {
+            res.status(200).json(taskArray);
+        })
+        .catch((err) => {
+            console.log(">> Error while finding tasks: ", err);
+        })
+});
+
 
 router.delete("/deleteAll", authCheck, (req, res) =>{
     Task.destroy({

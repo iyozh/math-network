@@ -1,11 +1,12 @@
 import React from 'react'
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
+import {withTranslation} from "react-i18next";
 
-const Toggle = ({ theme, toggleTheme }) => {
-    const isLight = theme === 'light';
+
+const Toggle = ({ t , theme, toggleTheme }) => {
     return (
-        <button onClick={toggleTheme} type="button" className="btn btn-outline-dark">Switch Theme</button>
+        <button onClick={toggleTheme} type="button" className="btn btn-outline-dark">{t('navbar.switchTheme')}</button>
     );
 };
 
@@ -14,4 +15,4 @@ Toggle.propTypes = {
     toggleTheme: func.isRequired,
 }
 
-export default Toggle;
+export default withTranslation()(Toggle);

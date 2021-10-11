@@ -44,7 +44,8 @@ class TaskTable extends Component {
             dataField: 'createdAt',
             text: t('taskTable.createdAt'),
             formatter: dateFormatter,
-            headerStyle: { width: '10%'}
+            headerStyle: { width: '10%'},
+            sort: true,
         }];
 
         if (!this.props.data) {

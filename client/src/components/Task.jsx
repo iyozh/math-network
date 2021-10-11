@@ -89,7 +89,7 @@ class Task extends Component {
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
-                <Toggle theme={theme} toggleTheme={toggleTheme} />
+                <Toggle t={t} theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <Header
                     authenticated={authenticated}

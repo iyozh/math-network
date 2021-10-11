@@ -5,7 +5,10 @@
       "logout": "Выйти",
       "createTask": "Создать задачу",
       "theme": "Сменить тему",
-      "profile": "Профиль"
+      "profile": "Профиль",
+      "switchTheme": "Сменить тему",
+      "russian": "Русский",
+      "english": "Английский"
     },
     "profile": {
       "started": "Начал",

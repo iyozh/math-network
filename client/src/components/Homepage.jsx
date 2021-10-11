@@ -66,10 +66,11 @@ class HomePage extends Component {
     render() {
         const { authenticated } = this.state;
         const [theme, toggleTheme] = this.props.switchTheme;
+        const { t } = this.props
         return (
             <ThemeProvider theme = {theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
-            <Toggle theme={theme} toggleTheme={toggleTheme} />
+            <Toggle t = { t } theme={theme} toggleTheme={toggleTheme} />
             <div>
                 <Header
                     authenticated={authenticated}

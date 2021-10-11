@@ -4,10 +4,38 @@ import {withTranslation} from "react-i18next";
 import withTheme from "./hooksUtils/themeHOC";
 
 class ProfileInfo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            solvedTasks: []
+        }
+    }
+
 
     static propTypes = {
         authenticated: PropTypes.bool.isRequired,
     };
+
+    componentDidMount() {
+        const { user } = this.props
+        if (Object.keys(user).length) {
+            fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/solved/user/${user.id}`, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-type": "application/json"
+                }
+            }).then(tasksResponse => {
+                if (tasksResponse.status === 200) return tasksResponse.json();
+                throw new Error("failed to load task");
+
+            }).then(tasksJson => {
+                this.setState({
+                    solvedTasks: tasksJson
+                });
+            })
+        }
+    }
 
     render() {
         const {user} = this.props;
@@ -54,7 +82,7 @@ class ProfileInfo extends Component {
                             <div className="row">
                                 <div className="col-6 col-lg-3">
                                     <div className="count-data text-center">
-                                        <h6 className="count h2" data-to="500" data-speed="500">500</h6>
+                                        <h6 className="count h2" data-to="500" data-speed="500">{ this.state.solvedTasks.length }</h6>
                                         <p className="m-0px font-w-600">{t('profile.completed')}</p>
                                     </div>
                                 </div>
