@@ -68,7 +68,6 @@ class HomePage extends Component {
         const { authenticated } = this.state;
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
-        console.log(this.state.tasks)
         return (
             <ThemeProvider theme = {theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />

@@ -26,12 +26,22 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-    Task.findByPk(req.params.id, { include: ["User"] })
+    Task.findByPk(req.params.id, { include: ["User", "TasksRatings"] })
         .then((task) => {
             res.status(200).json(task);
         })
         .catch((err) => {
             console.log(">> Error while finding current task: ", err);
+        })
+});
+
+router.get("/ratingAffixed/:id" , (req, res) => {
+    Task.findByPk(req.params.id, { include:  ["TasksRatings"], where: {UserId: req?.user.id} })
+        .then((task) => {
+            res.status(200).json(task);
+        })
+        .catch((err) => {
+            console.log(">> Error while finding rating of the current user: ", err);
         })
 });
 
@@ -58,7 +68,7 @@ router.post("/setupRating", authCheck,  (req,res) => {
     })
 })
 
-router.post("/solve", (req, res) => {
+router.post("/solve",authCheck, (req, res) => {
     SolvedTask.create({
         UserId: req.body.userId,
         TaskId: req.body.taskId

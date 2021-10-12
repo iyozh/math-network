@@ -16,6 +16,8 @@ class Task extends Component {
         authenticated: false,
         currentTask: {},
         solvedBy: [],
+        currentUserRating: 0,
+        ratingAffixed: false
     };
 
     componentDidMount() {
@@ -80,6 +82,7 @@ class Task extends Component {
     }
 
     render() {
+        console.log(this.state.ratingAffixed)
         const { authenticated } = this.state;
         const { user } = this.state
         const { solvedBy } = this.state
@@ -112,12 +115,16 @@ class Task extends Component {
                                                 </div>
                                                 <div className="media">
                                                     <label>{t('task.rating')}</label>
-                                                    <p> <ReactStars
+                                                    <ReactStars
+                                                        value={this.state.currentTask.TasksRatings.length ? (this.state.currentTask.TasksRatings.length > 1 ?
+                                                            (this.state.currentTask.TasksRatings
+                                                                    .reduce((sum,nextMark) => sum + nextMark?.rating, 0) /
+                                                                this.state.currentTask.TasksRatings.length) : this.state.currentTask.TasksRatings[0].rating) : 0 }
                                                         count={5}
-                                                        onChange={this.ratingChanged}
+                                                        edit={false}
                                                         size={24}
                                                         activeColor="#ffd700"
-                                                    /></p>
+                                                    />
                                                 </div>
                                                 <div className="media">
                                                     <label>{t('task.creator')}</label>
@@ -144,11 +151,23 @@ class Task extends Component {
                         ((this.state.currentTask.userId !== user.id) ?
                             (solvedBy.find((item) =>  item.UserId === user.id)) ?
                                 <h2>{t('task.solvedMessage')}✔️</h2> :
-                        <SolutionForm
+                        [<SolutionForm
                             solution = {this.state.currentTask.solution }
                             taskId = { this.state.currentTask.id }
                             userId = { user.id }
-                        />: "")
+                        />,
+                            (this.state.ratingAffixed) ? "" :
+                            <div>
+                                <h2>Rate the task</h2>
+                                <ReactStars
+                                    count={5}
+                                    edit={true}
+                                    size={36}
+                                    onChange={this.ratingChanged}
+                                    activeColor="#ffd700"
+                                />
+                            </div>
+                            ]: "")
                         : <div>
                             <h2>{t('task.signInWarning')}</h2>
                         </div>
@@ -158,6 +177,7 @@ class Task extends Component {
             </ThemeProvider>
         );
     }
+
 
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
@@ -177,7 +197,10 @@ class Task extends Component {
                 "taskId": this.state.currentTask.id
             })
         }).then(response => {
-
+            if (response.status === 200) {
+                console.log("123")
+                this.setState({ratingAffixed: true})
+            }
         })
     };
 }
