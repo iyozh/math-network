@@ -169,6 +169,7 @@ window.env = {
   "npm_package_dependencies_react_dom": "^17.0.2",
   "npm_package_dependencies_react_dotenv": "^0.1.3",
   "npm_package_dependencies_react_i18next": "^11.12.0",
+  "npm_package_dependencies_react_rating_stars_component": "^2.2.0",
   "npm_package_dependencies_react_router_dom": "^5.3.0",
   "npm_package_dependencies_react_scripts": "4.0.3",
   "npm_package_dependencies_styled_components": "^5.3.1",
@@ -212,7 +213,7 @@ window.env = {
   "SystemRoot": "C:\\Windows",
   "TEMP": "C:\\Users\\evzhe\\AppData\\Local\\Temp",
   "TERMINAL_EMULATOR": "JetBrains-JediTerm",
-  "TERM_SESSION_ID": "fa57a9c1-a538-4e10-be44-a0727202edb0",
+  "TERM_SESSION_ID": "0b33f1b9-56b4-4b87-88cc-cff54c4dd151",
   "TMP": "C:\\Users\\evzhe\\AppData\\Local\\Temp",
   "USERDOMAIN": "DESKTOP-0QELVI9",
   "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-0QELVI9",
@@ -223,5 +224,5 @@ window.env = {
   "windir": "C:\\Windows",
   "ZES_ENABLE_SYSMAN": "1",
   "_prog": "node",
-  "__INTELLIJ_COMMAND_HISTFILE__": "C:\\Users\\evzhe\\AppData\\Local\\JetBrains\\WebStorm2021.2\\terminal\\history\\math-network-history"
+  "__INTELLIJ_COMMAND_HISTFILE__": "C:\\Users\\evzhe\\AppData\\Local\\JetBrains\\WebStorm2021.2\\terminal\\history\\math-network-history1"
 };
