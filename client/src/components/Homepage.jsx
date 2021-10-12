@@ -93,9 +93,12 @@ class HomePage extends Component {
                                         </Card.Text>
                                         <Card.Subtitle>{t('card.createdBy')}<b>{task.User.name}</b></Card.Subtitle>
                                             <ReactStars
-                                                value={ task.TasksRatings ? task.TasksRatings[0]?.rating : 0 }
+                                                edit={false}
+                                                value={ task.TasksRatings.length ? ((task.TasksRatings.length > 1 ) ?
+                                                    (task.TasksRatings
+                                                            .reduce((mark,nextMark) => mark?.rating + nextMark?.rating) /
+                                                    task.TasksRatings.length) : task.TasksRatings[0].rating) : 0 }
                                                 count={5}
-                                                onChange={this.ratingChanged}
                                                 size={24}
                                                 activeColor="#ffd700"
                                             />
@@ -112,23 +115,6 @@ class HomePage extends Component {
 
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
-    };
-
-    ratingChanged = (newRating) => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/setupRating`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Credentials": true
-            },
-            body: JSON.stringify({
-                "rating": newRating,
-            })
-        }).then(response => {
-
-        })
     };
 }
 

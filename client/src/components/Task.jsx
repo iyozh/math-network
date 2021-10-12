@@ -7,6 +7,7 @@ import Toggle from "./themeUtils/Toggle";
 import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
 import {withTranslation} from "react-i18next";
+import ReactStars from "react-rating-stars-component";
 
 class Task extends Component {
     state = {
@@ -111,7 +112,12 @@ class Task extends Component {
                                                 </div>
                                                 <div className="media">
                                                     <label>{t('task.rating')}</label>
-                                                    <p>22</p>
+                                                    <p> <ReactStars
+                                                        count={5}
+                                                        onChange={this.ratingChanged}
+                                                        size={24}
+                                                        activeColor="#ffd700"
+                                                    /></p>
                                                 </div>
                                                 <div className="media">
                                                     <label>{t('task.creator')}</label>
@@ -155,6 +161,24 @@ class Task extends Component {
 
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
+    };
+
+    ratingChanged = (newRating) => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/setupRating`, {
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            },
+            body: JSON.stringify({
+                "rating": newRating,
+                "taskId": this.state.currentTask.id
+            })
+        }).then(response => {
+
+        })
     };
 }
 

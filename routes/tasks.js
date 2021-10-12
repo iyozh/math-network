@@ -51,7 +51,7 @@ router.post("/create", authCheck,  (req,res) => {
 router.post("/setupRating", authCheck,  (req,res) => {
     TasksRating.create( {
         rating: req.body.rating,
-        taskId: 2,
+        taskId: req.body.taskId,
         UserId: req.user[0].id,
         createdAt: new Date(),
         updatedAt: new Date(),
