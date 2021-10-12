@@ -17,7 +17,6 @@ class Task extends Component {
         currentTask: {},
         solvedBy: [],
         currentUserRating: 0,
-        ratingAffixed: false
     };
 
     componentDidMount() {
@@ -151,27 +150,26 @@ class Task extends Component {
                         ((this.state.currentTask.userId !== user.id) ?
                             (solvedBy.find((item) =>  item.UserId === user.id)) ?
                                 <h2>{t('task.solvedMessage')}✔️</h2> :
-                        [<SolutionForm
+                        <SolutionForm
                             solution = {this.state.currentTask.solution }
                             taskId = { this.state.currentTask.id }
                             userId = { user.id }
-                        />,
-                            (this.state.ratingAffixed) ? "" :
-                            <div>
-                                <h2>Rate the task</h2>
-                                <ReactStars
-                                    count={5}
-                                    edit={true}
-                                    size={36}
-                                    onChange={this.ratingChanged}
-                                    activeColor="#ffd700"
-                                />
-                            </div>
-                            ]: "")
+                        /> : "")
                         : <div>
                             <h2>{t('task.signInWarning')}</h2>
                         </div>
                     }
+                    { authenticated ?
+                        (<div>
+                            <h2>Rate the task</h2>
+                            <ReactStars
+                                count={5}
+                                edit={true}
+                                size={36}
+                                onChange={this.ratingChanged}
+                                activeColor="#ffd700"
+                            />
+                        </div>) : "" }
                 </div>
             </div>
             </ThemeProvider>
@@ -196,11 +194,6 @@ class Task extends Component {
                 "rating": newRating,
                 "taskId": this.state.currentTask.id
             })
-        }).then(response => {
-            if (response.status === 200) {
-                console.log("123")
-                this.setState({ratingAffixed: true})
-            }
         })
     };
 }
