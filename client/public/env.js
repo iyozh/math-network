@@ -213,7 +213,7 @@ window.env = {
   "SystemRoot": "C:\\Windows",
   "TEMP": "C:\\Users\\evzhe\\AppData\\Local\\Temp",
   "TERMINAL_EMULATOR": "JetBrains-JediTerm",
-  "TERM_SESSION_ID": "0b33f1b9-56b4-4b87-88cc-cff54c4dd151",
+  "TERM_SESSION_ID": "7b46618a-1d91-40a4-ac8a-4767f3e98de9",
   "TMP": "C:\\Users\\evzhe\\AppData\\Local\\Temp",
   "USERDOMAIN": "DESKTOP-0QELVI9",
   "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-0QELVI9",
@@ -224,5 +224,5 @@ window.env = {
   "windir": "C:\\Windows",
   "ZES_ENABLE_SYSMAN": "1",
   "_prog": "node",
-  "__INTELLIJ_COMMAND_HISTFILE__": "C:\\Users\\evzhe\\AppData\\Local\\JetBrains\\WebStorm2021.2\\terminal\\history\\math-network-history1"
+  "__INTELLIJ_COMMAND_HISTFILE__": "C:\\Users\\evzhe\\AppData\\Local\\JetBrains\\WebStorm2021.2\\terminal\\history\\math-network-history"
 };

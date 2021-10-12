@@ -94,9 +94,9 @@ class HomePage extends Component {
                                         <Card.Subtitle>{t('card.createdBy')}<b>{task.User.name}</b></Card.Subtitle>
                                             <ReactStars
                                                 edit={false}
-                                                value={ task.TasksRatings.length ? ((task.TasksRatings.length > 1 ) ?
+                                                value={ task.TasksRatings.length ? (task.TasksRatings.length > 1 ?
                                                     (task.TasksRatings
-                                                            .reduce((mark,nextMark) => mark?.rating + nextMark?.rating) /
+                                                            .reduce((sum,nextMark) => sum + nextMark?.rating, 0) /
                                                     task.TasksRatings.length) : task.TasksRatings[0].rating) : 0 }
                                                 count={5}
                                                 size={24}
