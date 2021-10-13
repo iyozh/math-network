@@ -67,8 +67,8 @@ router.post("/update/:id", authCheck,  (req,res) => {
     }, {where:
             { id: req.params.id}
     })
-        .then(task => {
-        res.redirect(`/task/${task.id}`)
+        .then(rowsUpdated => {
+        res.redirect(`/task/${req.params.id}`)
     })
 })
 
