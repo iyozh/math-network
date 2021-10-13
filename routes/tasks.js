@@ -5,6 +5,7 @@ const TasksRating = require('../models/index')["TasksRating"];
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
+    console.log("sdasads")
     if (!req.user) {
         res.status(401).json({
             authenticated: false,
@@ -85,6 +86,7 @@ router.post("/setupRating", authCheck,  (req,res) => {
 })
 
 router.post("/solve",authCheck, (req, res) => {
+    console.log("sdasda")
     SolvedTask.create({
         UserId: req.body.userId,
         TaskId: req.body.taskId
