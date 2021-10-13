@@ -55,14 +55,14 @@ class Header extends Component {
 
 
     _handleSignInVKClick = () => {
-        window.open(`${window.env.REACT_APP_SERVER_URL}/auth/vkontakte`, "_self")
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/vkontakte`, "_self")
     }
     _handleSignInClick = () => {
-        window.open(`${window.env.REACT_APP_SERVER_URL}/auth/google`, "_self");
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/google`, "_self");
     };
 
     _handleLogoutClick = () => {
-        window.open(`${window.env.REACT_APP_SERVER_URL}/auth/logout`, "_self");
+        window.open(`${process.env.REACT_APP_SERVER_URL}/auth/logout`, "_self");
         this.props.handleNotAuthenticated();
     };
 

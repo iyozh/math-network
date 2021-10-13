@@ -58,6 +58,20 @@ router.post("/create", authCheck,  (req,res) => {
     })
 })
 
+router.post("/update/:id", authCheck,  (req,res) => {
+    Task.update( {
+        title: req.body.title,
+        description: req.body.description,
+        solution: req.body.solution,
+        updatedAt: new Date(),
+    }, {where:
+            { id: req.params.id}
+    })
+        .then(task => {
+        res.redirect(`/task/${task.id}`)
+    })
+})
+
 router.post("/setupRating", authCheck,  (req,res) => {
     TasksRating.create( {
         rating: req.body.rating,

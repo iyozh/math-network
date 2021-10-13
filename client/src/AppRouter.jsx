@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Profile from "./components/Profile";
 import Task from "./components/Task";
 import CreateTaskForm from "./components/CreateTaskForm";
+import UpdateTaskForm from "./components/updateTaskForm";
 
 export const AppRouter = () => {
     return (
@@ -13,6 +14,7 @@ export const AppRouter = () => {
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/task/:id" component={Task} />
                 <Route exact path="/createTask" component={CreateTaskForm} />
+                <Route exact path="/updateTask/:id" component={UpdateTaskForm} />
             </div>
         </Router>
     );

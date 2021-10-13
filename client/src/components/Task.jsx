@@ -161,7 +161,7 @@ class Task extends Component {
                     }
                     { authenticated && (this.state.currentTask.userId !== user.id)  ?
                         (<div>
-                            <h2>Rate the task</h2>
+                            <h2>{t('task.rateTask')}</h2>
                             <ReactStars
                                 count={5}
                                 edit={true}

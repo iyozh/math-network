@@ -79,7 +79,7 @@ class CreateTaskForm extends Component {
                                 authenticated={authenticated}
                                 handleNotAuthenticated={this._handleNotAuthenticated}
                             />
-                            {(!Object.keys(user).length) ? "You need to sign in to see this page" :
+                            {(!Object.keys(user).length) ? <h2>{t('createTask.warningSignIn')}</h2>  :
                             <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
                                 <Row xs={3}>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
