@@ -159,7 +159,7 @@ class Task extends Component {
                             <h2>{t('task.signInWarning')}</h2>
                         </div>
                     }
-                    { authenticated ?
+                    { authenticated && (this.state.currentTask.userId !== user.id)  ?
                         (<div>
                             <h2>Rate the task</h2>
                             <ReactStars
