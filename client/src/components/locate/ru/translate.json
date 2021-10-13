@@ -39,7 +39,9 @@
       "checkSolution": "Проверить!",
       "checkPlaceHolder": "Введите свой ответ",
       "rateTask": "Оцените задачу",
-      "section": "Раздел"
+      "section": "Раздел",
+      "geometry": "Геометрия",
+      "algebra": "Алгебра"
     },
     "createTask": {
       "title": "Заголовок",

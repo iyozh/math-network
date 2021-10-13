@@ -39,7 +39,9 @@
       "checkSolution": "Check the solution!",
       "checkPlaceHolder": "Input your answer",
       "rateTask": "Rate the task",
-      "section": "Section"
+      "section": "Section",
+      "geometry": "Geometry",
+      "algebra": "Algebra"
     },
     "createTask": {
       "title": "Title",

@@ -90,7 +90,7 @@ class HomePage extends Component {
                                             {task.description.length > 155 ?
                                                 `${task.description.slice(0, 150)}...` : task.description}
                                         </Card.Text>
-                                        <Card.Text><i>{task.section}</i></Card.Text>
+                                        <Card.Text><i>{ this._getTranslatedSection(task.section) }</i></Card.Text>
                                         <Card.Subtitle>{t('card.createdBy')}<b>{task.User.name}</b></Card.Subtitle>
                                             <ReactStars
                                                 edit={false}
@@ -116,6 +116,19 @@ class HomePage extends Component {
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
     };
+
+    _getTranslatedSection = (section) => {
+        const sections = {};
+        const { t } = this.props
+        sections['Geometry'] = t('task.geometry')
+        sections['Algebra'] = t('task.algebra')
+        sections['Number Theory'] = t('task.numberTheory')
+        sections['Arithmetic'] = t('task.arithmetic')
+        sections['Combinatorics'] = t('task.combinatorics')
+        sections['Topology'] = t('task.topology')
+        sections['Mathematical Analysis'] = t('task.mathAnalysis')
+        return sections[section]
+    }
 }
 
 export default withTranslation()(withTheme(HomePage));

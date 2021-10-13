@@ -8,7 +8,7 @@ import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
 import {withTranslation} from "react-i18next";
 import ReactStars from "react-rating-stars-component";
-import {Button} from "react-bootstrap";
+
 
 class Task extends Component {
     state = {
@@ -141,7 +141,7 @@ class Task extends Component {
                                             <div className="col-md-6">
                                                 <div className="media">
                                                     <label>{t('task.section')}</label>
-                                                    <p>{ this.state.currentTask.section }</p>
+                                                    <p>{ this._getTranslatedSection() }</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,6 +190,19 @@ class Task extends Component {
     _handleNotAuthenticated = () => {
         this.setState({ authenticated: false });
     };
+
+    _getTranslatedSection = () => {
+        const sections = {};
+        const { t } = this.props
+        sections['Geometry'] = t('task.geometry')
+        sections['Algebra'] = t('task.algebra')
+        sections['Number Theory'] = t('task.numberTheory')
+        sections['Arithmetic'] = t('task.arithmetic')
+        sections['Combinatorics'] = t('task.combinatorics')
+        sections['Topology'] = t('task.topology')
+        sections['Mathematical Analysis'] = t('task.mathAnalysis')
+        return sections[this.state.currentTask.section]
+    }
 
     ratingChanged = (newRating) => {
         fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/setupRating`, {
