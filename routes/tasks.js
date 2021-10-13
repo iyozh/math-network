@@ -46,10 +46,12 @@ router.get("/ratingAffixed/:id" , (req, res) => {
 });
 
 router.post("/create", authCheck,  (req,res) => {
+    console.log("sadad")
     Task.create( {
         title: req.body.title,
         description: req.body.description,
         solution: req.body.solution,
+        section: req.body.section,
         userId: req.user[0].id,
         createdAt: new Date(),
         updatedAt: new Date(),

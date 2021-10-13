@@ -81,6 +81,20 @@ class CreateTaskForm extends Component {
                             />
                             {(!Object.keys(user).length) ? <h2>{t('createTask.warningSignIn')}</h2>  :
                             <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
+                                <Col xs={3}>
+                                    <Form.Label className="me-sm-2" htmlFor="inlineFormCustomSelect">
+                                        Math Section
+                                    </Form.Label>
+                                    <Form.Select name='section' className="me-sm-2" id="inlineFormCustomSelect">
+                                        <option value="Number Theory">Number Theory</option>
+                                        <option value="Algebra">Algebra</option>
+                                        <option value="Geometry">Geometry</option>
+                                        <option value="Arithmetic">Arithmetic</option>
+                                        <option value="Combinatorics">Combinatorics</option>
+                                        <option value="Topology">Topology</option>
+                                        <option value="Mathematical Analysis">Mathematical Analysis</option>
+                                    </Form.Select>
+                                </Col>
                                 <Row xs={3}>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                         <Form.Label>{t('createTask.title')}</Form.Label>

@@ -82,7 +82,6 @@ class Task extends Component {
     }
 
     render() {
-        console.log(this.state.ratingAffixed)
         const { authenticated } = this.state;
         const { user } = this.state
         const { solvedBy } = this.state
@@ -137,6 +136,12 @@ class Task extends Component {
                                                 <div className="media">
                                                     <label>{t('task.solutions')}</label>
                                                     <p>{ solvedBy.length}</p>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <div className="media">
+                                                    <label>{t('task.section')}</label>
+                                                    <p>{ this.state.currentTask.section }</p>
                                                 </div>
                                             </div>
                                         </div>

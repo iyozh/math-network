@@ -38,7 +38,8 @@
       "wrong": "Неправильно!",
       "checkSolution": "Проверить!",
       "checkPlaceHolder": "Введите свой ответ",
-      "rateTask": "Оцените задачу"
+      "rateTask": "Оцените задачу",
+      "section": "Раздел"
     },
     "createTask": {
       "title": "Заголовок",

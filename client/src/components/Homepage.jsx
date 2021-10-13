@@ -90,6 +90,7 @@ class HomePage extends Component {
                                             {task.description.length > 155 ?
                                                 `${task.description.slice(0, 150)}...` : task.description}
                                         </Card.Text>
+                                        <Card.Text><i>{task.section}</i></Card.Text>
                                         <Card.Subtitle>{t('card.createdBy')}<b>{task.User.name}</b></Card.Subtitle>
                                             <ReactStars
                                                 edit={false}

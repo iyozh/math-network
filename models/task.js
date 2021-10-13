@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
     solution: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    section: DataTypes.ENUM('Number Theory', 'Algebra', 'Geometry', 'Arithmetic', 'Combinatorics', 'Topology', 'Mathematical Analysis')
   }, {});
   Task.associate = function(models) {
     Task.belongsTo(models.User, {

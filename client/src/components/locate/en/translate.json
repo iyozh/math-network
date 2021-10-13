@@ -38,7 +38,8 @@
       "wrong": "Wrong!",
       "checkSolution": "Check the solution!",
       "checkPlaceHolder": "Input your answer",
-      "rateTask": "Rate the task"
+      "rateTask": "Rate the task",
+      "section": "Section"
     },
     "createTask": {
       "title": "Title",
@@ -47,7 +48,8 @@
       "titlePlaceHolder": "Solve the task using Pythagoras theorem",
       "descriptionPlaceHolder": "Points (-2, -3), (2, 1), (5, -2) are given in a rectangular coordinate system on a plane. Find out if they are the vertices of a right triangle.",
       "createButton": "Create task!",
-      "warningSignIn": "You need to sign in to see this page"
+      "warningSignIn": "You need to sign in to see this page",
+      "section": "Section"
     },
     "updateTask": {
       "title": "Title",
