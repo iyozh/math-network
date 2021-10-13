@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Button, Card, Col, Form, Row} from "react-bootstrap";
+import {Button, Form, Row} from "react-bootstrap";
 import Header from "./Header";
 import {darkTheme, lightTheme} from "./themeUtils/theme";
 import {GlobalStyles} from "./themeUtils/global";
@@ -77,7 +77,10 @@ class UpdateTaskForm extends Component {
 
                 }).then(tasksJson => {
                     this.setState({
-                        currentTask: tasksJson
+                        currentTask: tasksJson,
+                        title: tasksJson?.title,
+                        description: tasksJson?.description,
+                        solution: tasksJson?.solution,
                     });
                 }),
             ]
@@ -107,19 +110,19 @@ class UpdateTaskForm extends Component {
                             <Row xs={3}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>{t('updateTask.title')}</Form.Label>
-                                    <Form.Control maxLength="100" onChange={this.handleOnChange} name='title' value={this.state.currentTask.title} required type="text" placeholder={t('createTask.titlePlaceHolder')} />
+                                    <Form.Control maxLength="100" onChange={this.handleOnChange} name='title' value={this.state.title} required type="text" placeholder={t('createTask.titlePlaceHolder')} />
                                 </Form.Group>
                             </Row>
                             <Row xs={2}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                     <Form.Label>{t('updateTask.description')}</Form.Label>
-                                    <Form.Control maxLength="750" onChange={this.handleOnChange} name='description' required value={this.state.currentTask.description} as="textarea" placeholder={t('createTask.descriptionPlaceHolder')} rows={3} />
+                                    <Form.Control maxLength="750" onChange={this.handleOnChange} name='description' required value={this.state.description} as="textarea" placeholder={t('createTask.descriptionPlaceHolder')} rows={3} />
                                 </Form.Group>
                             </Row>
                             <Row xs={4}>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label>{t('updateTask.solution')}</Form.Label>
-                                    <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.currentTask.solution} required type="text" placeholder="5" />
+                                    <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
                                 </Form.Group>
                             </Row>
                             <Button  type="submit">{t('updateTask.updateButton')}</Button>

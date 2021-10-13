@@ -8,6 +8,7 @@ import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
 import {withTranslation} from "react-i18next";
 import ReactStars from "react-rating-stars-component";
+import {Button} from "react-bootstrap";
 
 class Task extends Component {
     state = {
@@ -104,8 +105,12 @@ class Task extends Component {
                             <div className="row align-items-center flex-row-reverse">
                                 <div className="col-lg-6">
                                     <div className="about-text go-to">
-                                        <h3 className="dark-color">{ this.state.currentTask.title }</h3>
+                                        <h3 className="dark-color">{ this.state.currentTask.title}</h3>
                                             <p> { this.state.currentTask.description }</p>
+                                        {
+                                            (this.state.user.id === this.state.currentTask.userId) ?
+                                                <h2><a href={`updateTask/${this.state.currentTask.id}`}>Edit</a></h2> : ""
+                                        }
                                         <div className="row about-list">
                                             <div className="col-md-6">
                                                 <div className="media">

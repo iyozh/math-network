@@ -14,7 +14,7 @@ export const AppRouter = () => {
                 <Route exact path="/profile" component={Profile} />
                 <Route exact path="/task/:id" component={Task} />
                 <Route exact path="/createTask" component={CreateTaskForm} />
-                <Route exact path="/updateTask/:id" component={UpdateTaskForm} />
+                <Route exact path="/task/updateTask/:id" component={UpdateTaskForm} />
             </div>
         </Router>
     );
