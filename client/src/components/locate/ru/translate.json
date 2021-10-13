@@ -41,7 +41,12 @@
       "rateTask": "Оцените задачу",
       "section": "Раздел",
       "geometry": "Геометрия",
-      "algebra": "Алгебра"
+      "algebra": "Алгебра",
+      "numberTheory": "Теория чисел",
+      "combinatorics": "Комбинаторика",
+      "mathAnalysis": "Математический анализ",
+      "arithmetic": "Арифметика",
+      "topology": "Топология"
     },
     "createTask": {
       "title": "Заголовок",

@@ -41,7 +41,12 @@
       "rateTask": "Rate the task",
       "section": "Section",
       "geometry": "Geometry",
-      "algebra": "Algebra"
+      "algebra": "Algebra",
+      "numberTheory": "Number Theory",
+      "combinatorics": "Combinatorics",
+      "mathAnalysis": "Mathematical Analysis",
+      "arithmetic": "Arithmetic",
+      "topology": "Topology"
     },
     "createTask": {
       "title": "Title",
