@@ -58,7 +58,7 @@ class ProfileInfo extends Component {
                             <div className="row">
                                 <div className="col-6 col-lg-3">
                                     <div className="count-data text-center">
-                                        <h6 className="count h2" data-to="500" data-speed="500">{ this.state.user.SolvedTasks.length }</h6>
+                                        <h6 className="count h2" data-to="500" data-speed="500">{ user.SolvedTasks.length }</h6>
                                         <p className="m-0px font-w-600">{t('profile.completed')}</p>
                                     </div>
                                 </div>
