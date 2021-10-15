@@ -71,7 +71,7 @@ class Task extends Component {
         const { user } = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
-        if (!this.state.currentTask.User)
+        if (!this.state.currentTask?.User)
             return (<div></div>)
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
@@ -130,7 +130,7 @@ class Task extends Component {
                                                 {
                                                     (this.state.user.id === this.state.currentTask.userId) ?
                                                 <div className="media">
-                                                    <p> <Button onClick={this.deleteTask} variant="danger">Delete Task</Button></p>
+                                                        <Button onClick={this.deleteTask} variant="danger">Delete Task</Button>
                                                 </div> : null
                                                 }
                                             </div>
@@ -219,7 +219,7 @@ class Task extends Component {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Credentials": true
             },
-        })
+        });
     }
 }
 

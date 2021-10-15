@@ -2,6 +2,7 @@ const express = require('express');
 const Task = require('../models/index')["Task"];
 const SolvedTask = require('../models/index')["SolvedTask"];
 const TasksRating = require('../models/index')["TasksRating"];
+const config = require('../config/mainConfig');
 const router = express.Router();
 
 const authCheck = (req, res, next) => {
@@ -136,7 +137,7 @@ router.delete("/delete/:id", authCheck, (req, res) =>{
             id: req.params.id
         }
     }).then(destroyedTask => {
-        res.redirect('/profile');
+        res.redirect(`${config.app.host}/profile`);
     })
 });
 
