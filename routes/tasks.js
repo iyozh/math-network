@@ -137,7 +137,7 @@ router.delete("/delete/:id", authCheck, (req, res) =>{
             id: req.params.id
         }
     }).then(destroyedTask => {
-        res.redirect(`${config.app.host}/profile`);
+        res.redirect(307,'/profile');
     })
 });
 
