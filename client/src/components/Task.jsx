@@ -16,7 +16,7 @@ class Task extends Component {
         user: [],
         error: null,
         authenticated: false,
-        currentTask: {},
+        currentTask: null,
         currentUserRating: 0,
     };
 
@@ -71,8 +71,7 @@ class Task extends Component {
         const { user } = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
-        if (!this.state.currentTask?.User)
-            return (<div></div>)
+        console.log(this.state.currentTask)
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
@@ -82,7 +81,8 @@ class Task extends Component {
                     authenticated={authenticated}
                     handleNotAuthenticated={this._handleNotAuthenticated}
                 />
-                <div>
+                { this.state.currentTask !== null ?
+                    <div>
                     <section className="section about-section gray-bg" id="about">
                         <div className="container">
                             <div className="row align-items-center flex-row-reverse">
@@ -172,7 +172,7 @@ class Task extends Component {
                                 activeColor="#ffd700"
                             />
                         </div>) : "" }
-                </div>
+                </div> : <h2>This task doesn't exist or was removed</h2>}
             </div>
             </ThemeProvider>
         );

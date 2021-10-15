@@ -137,7 +137,7 @@ router.post("/delete/:id", authCheck, (req, res) =>{
             id: req.params.id
         }
     }).then(destroyedTask => {
-        res.redirect('/profile');
+        res.redirect(`/task/${req.params.id}`);
     })
 });
 
