@@ -20,7 +20,7 @@ class HomePage extends Component {
 
     componentDidMount() {
         Promise.all([
-            fetch(`${window.env.REACT_APP_SERVER_URL}/auth/login/success`, {
+            fetch(`${process.env.REACT_APP_SERVER_URL}/auth/login/success`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -45,7 +45,7 @@ class HomePage extends Component {
                         error: "Failed to authenticate user"
                     });
                 }),
-        fetch(`${window.env.REACT_APP_SERVER_URL}/tasks`, {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks`, {
             method: "GET",
             headers: {
                 "Accept": "application/json",
@@ -87,8 +87,8 @@ class HomePage extends Component {
                                         <Card.Title><Link to={`/task/${task.id}`}>{ task.title.length > 40 ?
                                             `${task.title.slice(0, 35)}...` : task.title}</Link></Card.Title>
                                         <Card.Text>
-                                            {task.description.length > 155 ?
-                                                `${task.description.slice(0, 150)}...` : task.description}
+                                            {task.description.length > 50 ?
+                                                `${task.description.slice(0, 50)}...` : task.description}
                                         </Card.Text>
                                         <Card.Text><i>{ this._getTranslatedSection(task.section) }</i></Card.Text>
                                         <Card.Subtitle>{t('card.createdBy')}<b>{task.User.name}</b></Card.Subtitle>
