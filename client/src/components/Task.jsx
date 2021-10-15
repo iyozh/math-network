@@ -130,7 +130,9 @@ class Task extends Component {
                                                 {
                                                     (this.state.user.id === this.state.currentTask.userId) ?
                                                 <div className="media">
-                                                        <Button onClick={this.deleteTask} variant="danger">Delete Task</Button>
+                                                    <form method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`}>
+                                                        <Button type="submit" variant="danger">Delete Task</Button>
+                                                    </form>
                                                 </div> : null
                                                 }
                                             </div>
@@ -210,9 +212,9 @@ class Task extends Component {
         })
     };
 
-    deleteTask = () => {
+    deleteTask(event){
         fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`, {
-            method: "DELETE",
+            method: "POST",
             credentials: "include",
             headers: {
                 "Accept": "application/json",
@@ -220,6 +222,7 @@ class Task extends Component {
                 "Access-Control-Allow-Credentials": true
             },
         });
+        event.preventDefault();
     }
 }
 

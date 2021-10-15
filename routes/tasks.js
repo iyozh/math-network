@@ -130,14 +130,14 @@ router.delete("/deleteAll", authCheck, (req, res) =>{
     })
 });
 
-router.delete("/delete/:id", authCheck, (req, res) =>{
+router.post("/delete/:id", authCheck, (req, res) =>{
     Task.destroy({
         where: {
             userId: req.user[0].id,
             id: req.params.id
         }
     }).then(destroyedTask => {
-        res.redirect(307,'/profile');
+        res.redirect(303,'/profile');
     })
 });
 

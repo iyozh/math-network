@@ -80,7 +80,7 @@ class CreateTaskForm extends Component {
                                 handleNotAuthenticated={this._handleNotAuthenticated}
                             />
                             {(!Object.keys(user).length) ? <h2>{t('createTask.warningSignIn')}</h2>  :
-                            <Form method="post" action={`${window.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
+                            <Form method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
                                 <Col xs={3}>
                                     <Form.Label className="me-sm-2" htmlFor="inlineFormCustomSelect">
                                         Math Section
