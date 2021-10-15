@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     });
     Task.hasMany(models.TasksRating, {
       foreignKey: 'taskId',
+    });
+    Task.hasMany(models.SolvedTask, {
+      foreignKey: 'TaskId',
     })
   };
   return Task;

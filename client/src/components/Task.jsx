@@ -16,7 +16,6 @@ class Task extends Component {
         error: null,
         authenticated: false,
         currentTask: {},
-        solvedBy: [],
         currentUserRating: 0,
     };
 
@@ -63,28 +62,12 @@ class Task extends Component {
                         currentTask: tasksJson
                     });
                 }),
-                fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/solved/${this.props.match.params.id}`, {
-                    method: "GET",
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-type": "application/json"
-                    }
-                }).then(tasksResponse => {
-                    if (tasksResponse.status === 200) return tasksResponse.json();
-                    throw new Error("failed to load task");
-
-                }).then(tasksJson => {
-                    this.setState({
-                        solvedBy: tasksJson
-                    });
-                }),
             ])
     }
 
     render() {
         const { authenticated } = this.state;
         const { user } = this.state
-        const { solvedBy } = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
         if (!this.state.currentTask.User)
@@ -135,7 +118,7 @@ class Task extends Component {
                                                 </div>
                                                 <div className="media">
                                                     <label>{t('task.solutions')}</label>
-                                                    <p>{ solvedBy.length}</p>
+                                                    <p>{ this.state.currentTask.SolvedTasks.length}</p>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
@@ -158,7 +141,7 @@ class Task extends Component {
                     </section>
                     { authenticated ?
                         ((this.state.currentTask.userId !== user.id) ?
-                            (solvedBy.find((item) =>  item.UserId === user.id)) ?
+                            (this.state.currentTask.SolvedTasks.find((item) =>  item.UserId === user.id)) ?
                                 <h2>{t('task.solvedMessage')}✔️</h2> :
                         <SolutionForm
                             solution = {this.state.currentTask.solution }

@@ -17,7 +17,7 @@ const authCheck = (req, res, next) => {
 };
 
 router.get("/", (req, res) => {
-    Task.findAll({ include: ["User", "TasksRatings"], order:[["createdAt","DESC"]]})
+    Task.findAll({ include: ["User", "TasksRatings", "SolvedTasks"], order:[["createdAt","DESC"]]})
         .then((task) => {
             res.status(200).json(task);
         })
@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-    Task.findByPk(req.params.id, { include: ["User", "TasksRatings"] })
+    Task.findByPk(req.params.id, { include: ["User", "TasksRatings", "SolvedTasks"] })
         .then((task) => {
             res.status(200).json(task);
         })

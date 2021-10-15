@@ -26,7 +26,7 @@ router.get("/", authCheck, (req, res) => {
 });
 
 router.get("/user", authCheck, (req, res) =>{
-  User.findByPk(req.user[0].id, { include: ["Tasks"]})
+  User.findByPk(req.user[0].id, { include: ["Tasks", "SolvedTasks"] })
       .then((user) => {
         res.status(200).json(user);
       })

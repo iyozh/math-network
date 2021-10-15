@@ -5,11 +5,18 @@ module.exports = (sequelize, DataTypes) => {
     TaskId: DataTypes.INTEGER,
   }, {});
   SolvedTask.associate = function(models) {
-    models.Task.belongsToMany(models.User, { through: SolvedTask });
-    models.User.belongsToMany(models.Task, { through: SolvedTask });
+    SolvedTask.belongsTo(models.Task, {
+      foreignKey: 'TaskId',
+      onDelete: 'CASCADE'
+    });
+    SolvedTask.belongsTo(models.User, {
+      foreignKey: 'UserId',
+      onDelete: 'CASCADE'
+    });
+
+
   };
   return SolvedTask;
 };
-
 
 
