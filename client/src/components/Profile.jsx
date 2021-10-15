@@ -95,7 +95,7 @@ class Profile extends Component {
                         <Button onClick={this.handleDeletingTasks} variant="outline-danger">{t('taskTable.deleteTasks')}</Button>,
                     <div>
                     <TaskTable  data = { user.Tasks }/>
-                </div>] : <div>You need to login to see this page</div>
+                    </div>] : <div><h2>You need to login to see this page</h2></div>
                 }
             </div>
         </ThemeProvider>
