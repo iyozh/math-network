@@ -3,6 +3,8 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import {Link} from "react-router-dom";
 import {withTranslation} from "react-i18next";
+import filterFactory, { textFilter, dateFilter } from 'react-bootstrap-table2-filter';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 
 
 class TaskTable extends Component {
@@ -36,16 +38,23 @@ class TaskTable extends Component {
             style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
             headerStyle: { width: '20%'},
             formatter: titleFormatter,
+            filter: textFilter({
+                placeholder: t('taskTable.title'),
+            })
         }, {
             dataField: 'description',
             text: t('taskTable.description'),
             style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
+            filter: textFilter({
+                placeholder: t('taskTable.description'),
+            })
         }, {
             dataField: 'createdAt',
             text: t('taskTable.createdAt'),
             formatter: dateFormatter,
-            headerStyle: { width: '10%'},
+            headerStyle: { width: '15%'},
             sort: true,
+            filter: dateFilter()
         }];
 
         if (!this.props.data) {
@@ -55,7 +64,7 @@ class TaskTable extends Component {
         }
         return (
             <div>
-                <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRowProp} >
+                <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRowProp} filter={ filterFactory() } >
                 </BootstrapTable>
             </div>
         );

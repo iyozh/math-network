@@ -138,3 +138,5 @@ mark {
 body {
   overflow-x: hidden;
 }
+
+.sr-only{display:none !important}
