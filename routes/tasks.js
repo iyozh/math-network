@@ -86,7 +86,6 @@ router.post("/setupRating", authCheck,  (req,res) => {
 })
 
 router.post("/solve",authCheck, (req, res) => {
-    console.log("sdasda")
     SolvedTask.create({
         UserId: req.body.userId,
         TaskId: req.body.taskId
@@ -129,5 +128,17 @@ router.delete("/deleteAll", authCheck, (req, res) =>{
         res.status(200).json({message: "Tasks were deleted"})
     })
 });
+
+router.delete("/delete/:id", authCheck, (req, res) =>{
+    Task.destroy({
+        where: {
+            userId: req.user[0].id,
+            id: req.params.id
+        }
+    }).then(destroyedTask => {
+        res.redirect('/profile');
+    })
+});
+
 
 module.exports = router

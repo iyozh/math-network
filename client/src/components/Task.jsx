@@ -8,6 +8,7 @@ import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
 import {withTranslation} from "react-i18next";
 import ReactStars from "react-rating-stars-component";
+import {Button} from "react-bootstrap";
 
 
 class Task extends Component {
@@ -126,6 +127,12 @@ class Task extends Component {
                                                     <label>{t('task.section')}</label>
                                                     <p>{ this._getTranslatedSection() }</p>
                                                 </div>
+                                                {
+                                                    (this.state.user.id === this.state.currentTask.userId) ?
+                                                <div className="media">
+                                                    <p> <Button onClick={this.deleteTask} variant="danger">Delete Task</Button></p>
+                                                </div> : null
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -202,6 +209,18 @@ class Task extends Component {
             })
         })
     };
+
+    deleteTask = () => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`, {
+            method: "DELETE",
+            credentials: "include",
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Credentials": true
+            },
+        })
+    }
 }
 
 export default withTranslation()(withTheme(Task));
