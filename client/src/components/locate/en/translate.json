@@ -56,7 +56,14 @@
       "descriptionPlaceHolder": "Points (-2, -3), (2, 1), (5, -2) are given in a rectangular coordinate system on a plane. Find out if they are the vertices of a right triangle.",
       "createButton": "Create task!",
       "warningSignIn": "You need to sign in to see this page",
-      "section": "Section"
+      "section": "Section",
+      "geometry": "Geometry",
+      "algebra": "Algebra",
+      "numberTheory": "Number Theory",
+      "combinatorics": "Combinatorics",
+      "mathAnalysis": "Mathematical Analysis",
+      "arithmetic": "Arithmetic",
+      "topology": "Topology"
     },
     "updateTask": {
       "title": "Title",

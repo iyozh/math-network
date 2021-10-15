@@ -86,13 +86,13 @@ class CreateTaskForm extends Component {
                                         Math Section
                                     </Form.Label>
                                     <Form.Select name='section' className="me-sm-2" id="inlineFormCustomSelect">
-                                        <option value="Number Theory">Number Theory</option>
-                                        <option value="Algebra">Algebra</option>
-                                        <option value="Geometry">Geometry</option>
-                                        <option value="Arithmetic">Arithmetic</option>
-                                        <option value="Combinatorics">Combinatorics</option>
-                                        <option value="Topology">Topology</option>
-                                        <option value="Mathematical Analysis">Mathematical Analysis</option>
+                                        <option value="Number Theory">{t('createTask.numberTheory')}</option>
+                                        <option value="Algebra">{t('createTask.algebra')}</option>
+                                        <option value="Geometry">{t('createTask.geometry')}</option>
+                                        <option value="Arithmetic">{t('createTask.arithmetic')}</option>
+                                        <option value="Combinatorics">{t('createTask.combinatorics')}</option>
+                                        <option value="Topology">{t('createTask.topology')}</option>
+                                        <option value="Mathematical Analysis">{t('createTask.mathAnalysis')}</option>
                                     </Form.Select>
                                 </Col>
                                 <Row xs={3}>

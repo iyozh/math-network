@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Profile from "./components/Profile";
 import Task from "./components/Task";
 import CreateTaskForm from "./components/CreateTaskForm";
-import UpdateTaskForm from "./components/updateTaskForm";
+import UpdateTaskForm from "./components/UpdateTaskForm";
 
 export const AppRouter = () => {
     return (
