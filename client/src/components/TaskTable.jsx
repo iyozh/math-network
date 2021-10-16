@@ -6,6 +6,7 @@ import {withTranslation} from "react-i18next";
 import filterFactory, { textFilter, dateFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
 import {Button} from "react-bootstrap";
+import ReactStars from "react-rating-stars-component";
 
 
 class TaskTable extends Component {
@@ -78,6 +79,23 @@ class TaskTable extends Component {
                 </span>
             )
         }
+        function ratingFormatter(cell, row) {
+            console.log(row)
+            return (
+                <span>
+                     <ReactStars
+                         value={row.TasksRatings?.length ? (row.TasksRatings.length > 1 ?
+                             (row.TasksRatings
+                                     .reduce((sum,nextMark) => sum + nextMark?.rating, 0) /
+                                 row.TasksRatings.length) : row.TasksRatings[0].rating) : 0 }
+                         count={5}
+                         edit={false}
+                         size={18}
+                         activeColor="#ffd700"
+                     />
+                </span>
+            )
+        }
 
         const selectRow = {
             mode: 'checkbox',
@@ -104,7 +122,19 @@ class TaskTable extends Component {
             filter: textFilter({
                 placeholder: t('taskTable.description'),
             })
-        }, {
+        },{
+            dataField: 'rating',
+            text: t('taskTable.rating'),
+            formatter: ratingFormatter,
+        },{
+            dataField: 'solution',
+            text: t('taskTable.solution'),
+            headerStyle: { width: '15%'},
+            style: { whiteSpace: 'nowrap',textOverflow: 'ellipsis', overflow: 'hidden'},
+            filter: textFilter({
+                placeholder: t('taskTable.solution'),
+            })
+        },{
             dataField: 'createdAt',
             text: t('taskTable.createdAt'),
             formatter: dateFormatter,

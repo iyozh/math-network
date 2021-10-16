@@ -129,11 +129,15 @@ class Task extends Component {
                                                 </div>
                                                 {
                                                     (this.state.user.id === this.state.currentTask.userId) ?
+                                                [<div className="media">
+                                                    <label>{t('task.solution')}</label>
+                                                    <p>{ this.state.currentTask.solution }</p>
+                                                </div>,
                                                 <div className="media">
                                                     <form method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`}>
                                                         <Button type="submit" variant="danger">{t('task.deleteButton')}</Button>
                                                     </form>
-                                                </div> : null
+                                                </div>] : null
                                                 }
                                             </div>
                                         </div>

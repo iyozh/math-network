@@ -26,7 +26,8 @@
       "title": "Заголовок",
       "description": "Описание",
       "createdAt": "Создана",
-      "deleteSelected": "Удалить выбранные"
+      "deleteSelected": "Удалить выбранные",
+      "solution": "Решение"
     },
     "task": {
       "created": "Создана",
@@ -49,7 +50,8 @@
       "arithmetic": "Арифметика",
       "topology": "Топология",
       "removed": "Такой задачи не существует или она была удалена",
-      "deleteButton": "Удалить"
+      "deleteButton": "Удалить",
+      "solution": "Решение"
     },
     "createTask": {
       "title": "Заголовок",
