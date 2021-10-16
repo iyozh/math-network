@@ -80,7 +80,7 @@ class CreateTaskForm extends Component {
                                 handleNotAuthenticated={this._handleNotAuthenticated}
                             />
                             {(!Object.keys(user).length) ? <h2>{t('createTask.warningSignIn')}</h2>  :
-                            <Form method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
+                            <Form enctype="multipart/form-data" method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/create`} noValidate validated={this.state.validated} onSubmit={this.handleSubmit} >
                                 <Col xs={3}>
                                     <Form.Label className="me-sm-2" htmlFor="inlineFormCustomSelect">
                                         Math Section
@@ -113,6 +113,10 @@ class CreateTaskForm extends Component {
                                         <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
                                     </Form.Group>
                                 </Row>
+                                <Form.Group controlId="formFileMultiple" className="mb-3">
+                                    <Form.Label>Upload files</Form.Label>
+                                    <Form.Control name="uploaded_file" type="file" multiple />
+                                </Form.Group>
                                 <Button  type="submit">{t('createTask.createButton')}</Button>
                             </Form>
                             }

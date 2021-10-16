@@ -4,9 +4,9 @@ const SolvedTask = require('../models/index')["SolvedTask"];
 const TasksRating = require('../models/index')["TasksRating"];
 const config = require('../config/mainConfig');
 const router = express.Router();
+const upload = require('../config/multerConfig')
 
 const authCheck = (req, res, next) => {
-    console.log("sdasads")
     if (!req.user) {
         res.status(401).json({
             authenticated: false,
@@ -47,7 +47,7 @@ router.get("/ratingAffixed/:id" , (req, res) => {
         })
 });
 
-router.post("/create", authCheck,  (req,res) => {
+router.post("/create", authCheck, upload.single('uploaded_file'),  (req,res) => {
     Task.create( {
         title: req.body.title,
         description: req.body.description,

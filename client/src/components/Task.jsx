@@ -8,7 +8,7 @@ import {ThemeProvider} from "styled-components";
 import withTheme from "./hooksUtils/themeHOC";
 import {withTranslation} from "react-i18next";
 import ReactStars from "react-rating-stars-component";
-import {Button} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 
 
 class Task extends Component {
@@ -175,7 +175,7 @@ class Task extends Component {
                                 onChange={this.ratingChanged}
                                 activeColor="#ffd700"
                             />
-                        </div>) : "" }
+                        </div>) : ""}
                 </div> : <h2>{t('task.removed')}</h2>}
             </div>
             </ThemeProvider>
