@@ -118,7 +118,7 @@ class Task extends Component {
                                                     <p>{ this.state.currentTask.User.name } </p>
                                                 </div>
                                                 <div className="media">
-                                                    <label>{t('task.solutions')}</label>
+                                                    <label>{t('task.solvedBy')}</label>
                                                     <p>{ this.state.currentTask.SolvedTasks.length}</p>
                                                 </div>
                                             </div>

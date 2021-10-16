@@ -34,7 +34,7 @@
       "created": "Created",
       "rating": "Rating",
       "creator": "Creator",
-      "solutions": "Solutions",
+      "solvedBy": "Solved",
       "signInWarning": "You need to sign in to solve tasks!",
       "solvedMessage": "You complete this!",
       "right": "Right!",
