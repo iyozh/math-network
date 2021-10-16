@@ -120,7 +120,7 @@ class TaskTable extends Component {
         }
         return (
             <div>
-                <Button onClick={this.handleBtnClick} variant="outline-danger">Delete Selected Tasks</Button>,
+                <Button onClick={this.handleBtnClick} variant="outline-danger">{t('taskTable.deleteSelected')}</Button>
                 <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRow} filter={ filterFactory() } >
                 </BootstrapTable>
             </div>

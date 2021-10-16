@@ -25,7 +25,8 @@
       "deleteTasks": "Удалить все задачи",
       "title": "Заголовок",
       "description": "Описание",
-      "createdAt": "Создана"
+      "createdAt": "Создана",
+      "deleteSelected": "Удалить выбранные"
     },
     "task": {
       "created": "Создана",
@@ -46,7 +47,9 @@
       "combinatorics": "Комбинаторика",
       "mathAnalysis": "Математический анализ",
       "arithmetic": "Арифметика",
-      "topology": "Топология"
+      "topology": "Топология",
+      "removed": "Такой задачи не существует или она была удалена",
+      "deleteButton": "Удалить"
     },
     "createTask": {
       "title": "Заголовок",

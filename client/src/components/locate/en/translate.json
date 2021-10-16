@@ -25,7 +25,8 @@
       "deleteTasks": "Delete All Tasks",
       "title": "Title",
       "description": "Description",
-      "createdAt": "Created At"
+      "createdAt": "Created At",
+      "deleteSelected": "Delete Selected"
     },
     "task": {
       "created": "Created",
@@ -46,7 +47,9 @@
       "combinatorics": "Combinatorics",
       "mathAnalysis": "Mathematical Analysis",
       "arithmetic": "Arithmetic",
-      "topology": "Topology"
+      "topology": "Topology",
+      "removed": "This task doesn't exist or was removed",
+      "deleteButton": "Delete"
     },
     "createTask": {
       "title": "Title",

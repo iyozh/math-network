@@ -131,7 +131,7 @@ class Task extends Component {
                                                     (this.state.user.id === this.state.currentTask.userId) ?
                                                 <div className="media">
                                                     <form method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`}>
-                                                        <Button type="submit" variant="danger">Delete Task</Button>
+                                                        <Button type="submit" variant="danger">{t('task.deleteButton')}</Button>
                                                     </form>
                                                 </div> : null
                                                 }
@@ -172,7 +172,7 @@ class Task extends Component {
                                 activeColor="#ffd700"
                             />
                         </div>) : "" }
-                </div> : <h2>This task doesn't exist or was removed</h2>}
+                </div> : <h2>{t('task.removed')}</h2>}
             </div>
             </ThemeProvider>
         );
