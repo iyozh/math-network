@@ -5,9 +5,62 @@ import {Link} from "react-router-dom";
 import {withTranslation} from "react-i18next";
 import filterFactory, { textFilter, dateFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+import {Button} from "react-bootstrap";
 
 
 class TaskTable extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { selected: [] };
+    }
+
+    handleBtnClick = (event) => {
+      if (this.state.selected) {
+          fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/deleteSelectedTasks`, {
+              method: "DELETE",
+              credentials: "include",
+              headers: {
+                  "Accept": "application/json",
+                  "Content-Type": "application/json",
+                  "Access-Control-Allow-Credentials": true
+              },
+              body:
+                  JSON.stringify({
+                      "taskIds": this.state.selected
+                  })
+          }).then(response => {
+              if (response.status === 200)
+                  window.location.reload();
+          });
+          event.preventDefault();
+      }
+    }
+
+    handleOnSelect = (row, isSelect) => {
+        if (isSelect) {
+            this.setState(() => ({
+                selected: [...this.state.selected, row.id]
+            }));
+        } else {
+            this.setState(() => ({
+                selected: this.state.selected.filter(x => x !== row.id)
+            }));
+        }
+    }
+
+    handleOnSelectAll = (isSelect, rows) => {
+        const ids = rows.map(r => r.id);
+        if (isSelect) {
+            this.setState(() => ({
+                selected: ids
+            }));
+        } else {
+            this.setState(() => ({
+                selected: []
+            }));
+        }
+    }
 
     render() {
         function dateFormatter(cell, row) {
@@ -26,10 +79,13 @@ class TaskTable extends Component {
             )
         }
 
-        const selectRowProp = {
+        const selectRow = {
             mode: 'checkbox',
             clickToSelect: true,
             bgColor: 'gold',
+            selected: this.state.selected,
+            onSelect: this.handleOnSelect,
+            onSelectAll: this.handleOnSelectAll
         };
         const { t } = this.props
         const columns = [{
@@ -64,7 +120,8 @@ class TaskTable extends Component {
         }
         return (
             <div>
-                <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRowProp} filter={ filterFactory() } >
+                <Button onClick={this.handleBtnClick} variant="outline-danger">Delete Selected Tasks</Button>,
+                <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRow} filter={ filterFactory() } >
                 </BootstrapTable>
             </div>
         );

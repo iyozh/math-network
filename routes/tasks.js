@@ -48,7 +48,6 @@ router.get("/ratingAffixed/:id" , (req, res) => {
 });
 
 router.post("/create", authCheck,  (req,res) => {
-    console.log("sadad")
     Task.create( {
         title: req.body.title,
         description: req.body.description,
@@ -124,6 +123,17 @@ router.delete("/deleteAll", authCheck, (req, res) =>{
     Task.destroy({
         where: {
             userId: req.user[0].id
+        }
+    }).then(destroyedTasks => {
+        res.status(200).json({message: "Tasks were deleted"})
+    })
+});
+
+router.delete("/deleteSelectedTasks", authCheck, (req, res) =>{
+    Task.destroy({
+        where: {
+            userId: req.user[0].id,
+            id: req.body.taskIds
         }
     }).then(destroyedTasks => {
         res.status(200).json({message: "Tasks were deleted"})
