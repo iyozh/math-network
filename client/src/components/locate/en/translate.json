@@ -27,7 +27,8 @@
       "description": "Description",
       "createdAt": "Created At",
       "deleteSelected": "Delete Selected",
-      "solution": "Solution"
+      "solution": "Solution",
+      "rating": "Rating"
     },
     "task": {
       "created": "Created",

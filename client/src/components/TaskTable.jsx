@@ -126,6 +126,7 @@ class TaskTable extends Component {
             dataField: 'rating',
             text: t('taskTable.rating'),
             formatter: ratingFormatter,
+            headerStyle: { verticalAlign: 'top'}
         },{
             dataField: 'solution',
             text: t('taskTable.solution'),

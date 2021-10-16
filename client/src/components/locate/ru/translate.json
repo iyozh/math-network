@@ -27,7 +27,8 @@
       "description": "Описание",
       "createdAt": "Создана",
       "deleteSelected": "Удалить выбранные",
-      "solution": "Решение"
+      "solution": "Решение",
+      "rating": "Рейтинг"
     },
     "task": {
       "created": "Создана",
