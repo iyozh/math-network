@@ -140,14 +140,14 @@ router.delete("/deleteSelectedTasks", authCheck, (req, res) =>{
     })
 });
 
-router.post("/delete/:id", authCheck, (req, res) =>{
+router.post("/deleteTask", authCheck, (req, res) =>{
     Task.destroy({
         where: {
             userId: req.user[0].id,
-            id: req.params.id
+            id: req.body.taskId
         }
     }).then(destroyedTask => {
-        res.redirect(`/task/${req.params.id}`);
+        res.status(200).json({message: "Tasks were deleted"})
     })
 });
 

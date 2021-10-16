@@ -134,7 +134,7 @@ class Task extends Component {
                                                     <p>{ this.state.currentTask.solution }</p>
                                                 </div>,
                                                 <div className="media">
-                                                    <form method="post" action={`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`}>
+                                                    <form method="post" onSubmit={this.deleteTask} action={`${process.env.REACT_APP_SERVER_URL}/tasks/deleteTask`}>
                                                         <Button type="submit" variant="danger">{t('task.deleteButton')}</Button>
                                                     </form>
                                                 </div>] : null
@@ -216,8 +216,8 @@ class Task extends Component {
         })
     };
 
-    deleteTask(event){
-        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/delete/${this.state.currentTask.id}`, {
+    deleteTask = (event) => {
+        fetch(`${process.env.REACT_APP_SERVER_URL}/tasks/deleteTask`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -225,7 +225,14 @@ class Task extends Component {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Credentials": true
             },
-        });
+            body:
+                JSON.stringify({
+                    "taskId": this.state.currentTask.id
+                })
+        }).then(response => {
+            if (response.status === 200)
+                window.location.reload();
+        })
         event.preventDefault();
     }
 }
