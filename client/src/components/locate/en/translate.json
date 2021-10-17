@@ -53,7 +53,8 @@
       "topology": "Topology",
       "removed": "This task doesn't exist or was removed",
       "deleteButton": "Delete",
-      "solution": "Solution"
+      "solution": "Solution",
+      "edit": "Edit"
     },
     "createTask": {
       "title": "Title",

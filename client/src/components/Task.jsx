@@ -92,7 +92,7 @@ class Task extends Component {
                                             <p> { this.state.currentTask.description }</p>
                                         {
                                             (this.state.user.id === this.state.currentTask.userId) ?
-                                                <h2><a href={`updateTask/${this.state.currentTask.id}`}>Edit</a></h2> : ""
+                                                <h2><a href={`updateTask/${this.state.currentTask.id}`}>{t('task.edit')}</a></h2> : ""
                                         }
                                         <div className="row about-list">
                                             <div className="col-md-6">
