@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {withTranslation} from "react-i18next";
 import filterFactory, { textFilter, dateFilter } from 'react-bootstrap-table2-filter';
 import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+import paginationFactory from 'react-bootstrap-table2-paginator'
 import {Button} from "react-bootstrap";
 import ReactStars from "react-rating-stars-component";
 
@@ -152,7 +153,7 @@ class TaskTable extends Component {
         return (
             <div>
                 <Button onClick={this.handleBtnClick} variant="outline-danger">{t('taskTable.deleteSelected')}</Button>
-                <BootstrapTable bootstrap4 noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRow} filter={ filterFactory() } >
+                <BootstrapTable bootstrap4 pagination={ paginationFactory() } noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRow} filter={ filterFactory() } >
                 </BootstrapTable>
             </div>
         );
