@@ -6,8 +6,7 @@ const session = require('express-session')
 const logger = require('morgan');
 const passport = require('passport');
 const cors = require("cors");
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
+let userRouter = require('./routes/user');
 let authRouter = require('./routes/auth');
 let tasksRouter = require('./routes/tasks')
 const config = require('./config/mainConfig');
@@ -45,8 +44,7 @@ app.use(
 );
 
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', userRouter);
 app.use('/auth', authRouter);
 app.use('/tasks', tasksRouter);
 
