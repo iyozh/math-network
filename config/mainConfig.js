@@ -17,6 +17,10 @@ const development = {
     },
     db: {
         databaseUrl: process.env.DATABASE_URL,
+    },
+    s3: {
+        secretAccessKey: process.env.AWS_SECRET_KEY,
+        accessKeyId: process.env.AWS_ACCESS_KEY
     }
 };
 
@@ -34,6 +38,10 @@ const production = {
     },
     db: {
         databaseUrl: process.env.DATABASE_URL,
+    },
+    s3: {
+        secretAccessKey: process.env.AWS_SECRET_KEY,
+        accessKeyId: process.env.AWS_ACCESS_KEY
     }
 };
 
