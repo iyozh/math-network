@@ -28,7 +28,8 @@
       "createdAt": "Created At",
       "deleteSelected": "Delete Selected",
       "solution": "Solution",
-      "rating": "Rating"
+      "rating": "Rating",
+      "noTasks": "There is no data"
     },
     "task": {
       "created": "Created",
@@ -69,7 +70,8 @@
       "combinatorics": "Combinatorics",
       "mathAnalysis": "Mathematical Analysis",
       "arithmetic": "Arithmetic",
-      "topology": "Topology"
+      "topology": "Topology",
+      "upload": "Upload photos"
     },
     "updateTask": {
       "title": "Title",

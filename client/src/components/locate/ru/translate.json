@@ -28,7 +28,8 @@
       "createdAt": "Создана",
       "deleteSelected": "Удалить выбранные",
       "solution": "Решение",
-      "rating": "Рейтинг"
+      "rating": "Рейтинг",
+      "noTasks": "Нет данных"
     },
     "task": {
       "created": "Создана",
@@ -68,7 +69,8 @@
       "combinatorics": "Комбинаторика",
       "mathAnalysis": "Математический анализ",
       "arithmetic": "Арифметика",
-      "topology": "Топология"
+      "topology": "Топология",
+      "upload": "Загрузить фото"
     },
     "updateTask": {
       "title": "Заголовок",

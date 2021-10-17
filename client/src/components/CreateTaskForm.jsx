@@ -114,7 +114,7 @@ class CreateTaskForm extends Component {
                                     </Form.Group>
                                 </Row>
                                 <Form.Group controlId="formFileMultiple" className="mb-3">
-                                    <Form.Label>Upload files</Form.Label>
+                                    <Form.Label>{t('createTask.upload')}</Form.Label>
                                     <Form.Control name="uploaded_file" type="file" multiple />
                                 </Form.Group>
                                 <Button  type="submit">{t('createTask.createButton')}</Button>

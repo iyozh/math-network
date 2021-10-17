@@ -81,7 +81,6 @@ class TaskTable extends Component {
             )
         }
         function ratingFormatter(cell, row) {
-            console.log(row)
             return (
                 <span>
                      <ReactStars
@@ -153,7 +152,7 @@ class TaskTable extends Component {
         return (
             <div>
                 <Button onClick={this.handleBtnClick} variant="outline-danger">{t('taskTable.deleteSelected')}</Button>
-                <BootstrapTable bootstrap4 pagination={ paginationFactory() } noDataIndication="There is no data" keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRow} filter={ filterFactory() } >
+                <BootstrapTable bootstrap4 pagination={ paginationFactory() } noDataIndication={t('taskTable.noTasks')} keyField="id" data={ this.props.data } columns={ columns } hover selectRow={selectRow} filter={ filterFactory() } >
                 </BootstrapTable>
             </div>
         );

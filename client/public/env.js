@@ -166,6 +166,7 @@ window.env = {
   "npm_package_dependencies_react": "^17.0.2",
   "npm_package_dependencies_react_bootstrap": "^2.0.0-rc.0",
   "npm_package_dependencies_react_bootstrap_table2_filter": "^1.3.3",
+  "npm_package_dependencies_react_bootstrap_table2_paginator": "^2.1.2",
   "npm_package_dependencies_react_bootstrap_table_next": "^4.0.3",
   "npm_package_dependencies_react_dom": "^17.0.2",
   "npm_package_dependencies_react_dotenv": "^0.1.3",
