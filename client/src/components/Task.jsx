@@ -71,7 +71,6 @@ class Task extends Component {
         const { user } = this.state
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
-        console.log(this.state.currentTask)
         return (
             <ThemeProvider  theme = {theme === 'light' ? lightTheme : darkTheme}>
                 <GlobalStyles />
