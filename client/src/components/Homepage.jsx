@@ -68,6 +68,7 @@ class HomePage extends Component {
         const { authenticated } = this.state;
         const [theme, toggleTheme] = this.props.switchTheme;
         const { t } = this.props
+        console.log(this.state.tasks)
         return (
             <ThemeProvider theme = {theme === 'light' ? lightTheme : darkTheme}>
             <GlobalStyles />
@@ -82,7 +83,9 @@ class HomePage extends Component {
                         {Array.from( this.state.tasks ).map((task, idx) => (
                             <Col>
                                 <Card>
-                                    <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} />
+                                    { task?.Photos.length >= 1 ?
+                                        (<Card.Img variant="top" src={task?.Photos[0].url} />) :
+                                        <Card.Img variant="top" src={process.env.PUBLIC_URL + '/img/img.png'} /> }
                                     <Card.Body>
                                         <Card.Title><Link to={`/task/${task.id}`}>{ task.title.length > 40 ?
                                             `${task.title.slice(0, 35)}...` : task.title}</Link></Card.Title>

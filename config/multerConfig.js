@@ -5,9 +5,10 @@ const config = require('./mainConfig');
 const path = require("path");
 
 aws.config.update({
+    signatureVersion: "v4",
     secretAccessKey: config.s3.secretAccessKey,
     accessKeyId: config.s3.accessKeyId,
-    region: 'us-east-1'
+    region: 'eu-central-1'
 });
 
 const s3 = new aws.S3();
@@ -23,5 +24,15 @@ const upload = multer({
     })
 });
 
+function getSignedUrl(key) {
+        return s3.getSignedUrl(
+            "getObject",
+            {
+                Bucket: "math-network",
+                Key: key,
+                Expires: 10000
+            }
+        )
+}
 
-module.exports = upload;
+module.exports = { upload, getSignedUrl };

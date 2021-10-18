@@ -1,11 +1,19 @@
+const {getSignedUrl} = require("../config/multerConfig");
 const Task = require('../models/index')["Task"];
 const TasksRating = require('../models/index')["TasksRating"];
 const SolvedTask = require('../models/index')["SolvedTask"];
+const Photo = require('../models/index')["Photo"];
+
 
 exports.getAllTasks = function(req, res){
-    Task.findAll({ include: ["User", "TasksRatings", "SolvedTasks"], order:[["createdAt","DESC"]]})
-        .then((task) => {
-            res.status(200).json(task);
+    Task.findAll({ include: ["User", "TasksRatings", "SolvedTasks", "Photos"], order:[["createdAt","DESC"]]})
+        .then((tasks) => {
+            tasks.map( task => {
+                const fileName = task.Photos.length >= 1 ? task.Photos[0].dataValues.filename : "";
+                if (fileName)
+                    task.Photos[0].dataValues["url"] = getSignedUrl(fileName)
+            })
+            res.status(200).json(tasks);
         })
         .catch((err) => {
             console.log(">> Error while finding tasks: ", err);
@@ -13,8 +21,10 @@ exports.getAllTasks = function(req, res){
 }
 
 exports.getTask = function(req, res){
-    Task.findByPk(req.params.id, { include: ["User", "TasksRatings", "SolvedTasks"] })
+    Task.findByPk(req.params.id, { include: ["User", "TasksRatings", "SolvedTasks", "Photos"] })
         .then((task) => {
+            const fileName = task.Photos[0] ? task.Photos[0].dataValues.filename : "";
+            task.Photos[0].dataValues["url"] = getSignedUrl(fileName)
             res.status(200).json(task);
         })
         .catch((err) => {
@@ -41,6 +51,12 @@ exports.createTask = function(req,res){
         createdAt: new Date(),
         updatedAt: new Date(),
     }).then(task => {
+        Photo.create(
+            {
+                filename: req.file.key,
+                taskId: task.id
+            }
+        )
         res.redirect(`/task/${task.id}`)
     })
 }

@@ -145,7 +145,9 @@ class Task extends Component {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="about-avatar">
-                                        <img src={process.env.PUBLIC_URL + "/img/img.png"} title="" alt=""></img>
+                                        { this.state.currentTask?.Photos ?
+                                            <img src={this.state.currentTask.Photos[0].url} title="" alt=""></img> :
+                                        <img src={process.env.PUBLIC_URL + "/img/img.png"} title="" alt=""></img> }
                                     </div>
                                 </div>
                             </div>

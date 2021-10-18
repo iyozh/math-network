@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../config/multerConfig')
+const {upload} = require('../config/multerConfig')
 const taskController = require("../controllers/taskController");
 
 const authCheck = (req, res, next) => {
