@@ -23,8 +23,9 @@ exports.getAllTasks = function(req, res){
 exports.getTask = function(req, res){
     Task.findByPk(req.params.id, { include: ["User", "TasksRatings", "SolvedTasks", "Photos"] })
         .then((task) => {
-            const fileName = task.Photos[0] ? task.Photos[0].dataValues.filename : "";
-            task.Photos[0].dataValues["url"] = getSignedUrl(fileName)
+            const fileName = task.Photos.length >= 1 ? task.Photos[0].dataValues.filename : "";
+            if (fileName)
+                task.Photos[0].dataValues["url"] = getSignedUrl(fileName)
             res.status(200).json(task);
         })
         .catch((err) => {
