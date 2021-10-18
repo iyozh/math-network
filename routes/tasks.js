@@ -2,17 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {upload} = require('../config/multerConfig')
 const taskController = require("../controllers/taskController");
-
-const authCheck = (req, res, next) => {
-    if (!req.user) {
-        res.status(401).json({
-            authenticated: false,
-            message: "user has not been authenticated"
-        });
-    } else {
-        next();
-    }
-};
+const {authCheck} = require("../controllers/authController");
 
 router.get("/", taskController.getAllTasks);
 
