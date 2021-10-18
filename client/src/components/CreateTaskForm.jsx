@@ -113,10 +113,12 @@ class CreateTaskForm extends Component {
                                         <Form.Control maxLength="50" onChange={this.handleOnChange} name='solution' value={this.state.solution} required type="text" placeholder="5" />
                                     </Form.Group>
                                 </Row>
+                                <Row xs={4}>
                                 <Form.Group controlId="formFileMultiple" className="mb-3">
                                     <Form.Label>{t('createTask.upload')}</Form.Label>
                                     <Form.Control name="uploaded_file" type="file" multiple />
                                 </Form.Group>
+                                </Row>
                                 <Button  type="submit">{t('createTask.createButton')}</Button>
                             </Form>
                             }
