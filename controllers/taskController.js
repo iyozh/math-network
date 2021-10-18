@@ -51,12 +51,15 @@ exports.createTask = function(req,res){
         createdAt: new Date(),
         updatedAt: new Date(),
     }).then(task => {
-        Photo.create(
-            {
-                filename: req.file.key,
-                taskId: task.id
-            }
-        )
+        if (req.file) {
+            Photo.create(
+                {
+                    filename: req.file.key,
+                    taskId: task.id
+                }
+            )
+        }
+
         res.redirect(`/task/${task.id}`)
     })
 }
